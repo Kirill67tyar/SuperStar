@@ -221,3 +221,4 @@ class LevelTable(models.Model):
     score = models.SmallIntegerField(verbose_name='Эталонная оценка',)
     name = models.CharField(max_length=20, choices=LEVEL_NAME_CHOICES)
     accordance = models.CharField(max_length=20, choices=LEVEL_ACCORDANCE_CHOICES)
+
