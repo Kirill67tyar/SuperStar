@@ -150,6 +150,7 @@ class EmployeeTeamTable(models.Model):
             )
         ]
 
+
 class PositionRequirementsTable(models.Model):
 
     """Модель чего?."""
