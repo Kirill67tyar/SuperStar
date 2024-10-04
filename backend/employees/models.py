@@ -1,99 +1,144 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-User = get_user_model()
-
-
-
-class GradeTable(models.Model):
-    """Модель чего?."""
+class Grade(models.Model):
+    """Модель грейда."""
 
     GRADE_CHOICES = [
-        ('Junior', 'Джун'),
-        ('Middle', 'Мидл'),
-        ('Senior', 'Синьор'),
+        ('Junior', 'Junior'),
+        ('Middle', 'Middle'),
+        ('Senior', 'Senior'),
     ]
-    grade = models.CharField(max_length=20, choices=GRADE_CHOICES)
+    name = models.CharField(
+        max_length=20,
+        choices=GRADE_CHOICES,
+    )
 
     class Meta:
-        verbose_name_plural = 'ljlel'
+        verbose_name = 'Домен'
+        verbose_name_plural = 'Домены'
+        ordering = ('pk',)
 
 
-class PositionTable(models.Model):
-    """Модель чего?."""
+class Position(models.Model):
+    """Модель должности."""
 
     name = models.CharField(
         max_length=100,
+        unique=True,
         verbose_name='Название',
     )
 
     class Meta:
-        verbose_name_plural = 'ljlel'
+        verbose_name = 'Должность'
+        verbose_name_plural = 'Должности'
+        ordering = ('pk',)
 
 
-class EmployeeTable(models.Model):
-    """Модель сотрудника."""
+class Team(models.Model):
+    """Модель команды."""
 
-    last_name = models.CharField(
-        max_length=50,
-        verbose_name='Имя',
+    name = models.CharField(
+        max_length=100,
+        unique=True,
+        verbose_name='Название',
     )
-    first_name = models.CharField(
-        max_length=50,
-        verbose_name='Фамилия',
-    )
-    position = models.ForeignKey(
-        PositionTable,
-        on_delete=models.CASCADE,
-    )
-    bus_factor = models.BooleanField()
-    grade = models.ForeignKey(
-        GradeTable,
-        on_delete=models.CASCADE,
-    )
-    created = models.DateTimeField('Добавлено', auto_now_add=True)
 
     class Meta:
-        verbose_name_plural = 'ljlel'
+        verbose_name = 'Команда'
+        verbose_name_plural = 'Команды'
 
 
-class CompetenceTable(models.Model):
+class Employee(models.Model):
+    """Модель сотрудника."""
+    name = models.CharField(
+        max_length=100,
+        verbose_name='Фамилия Имя',
+    )
+    position = models.ForeignKey(
+        Position,
+        on_delete=models.CASCADE,
+        # related_name='employees',
+        verbose_name='Дожность',
+    )
+    bus_factor = models.BooleanField(
+        default=False,
+        verbose_name='Автобусный фактор',
+    )
+    grade = models.ForeignKey(
+        Grade,
+        # related_name='employees'
+        on_delete=models.CASCADE,
+        verbose_name='Грейд',
+    )
+    team = models.ManyToManyField(
+        Team,
+        # related_name='employees'
+        verbose_name='Команды',
+    )
+    created = models.DateField(
+        verbose_name='Добавлено',
+    )
+
+    class Meta:
+        verbose_name = 'Сотрудник'
+        verbose_name_plural = 'Сотрудники'
+        ordering = ('pk', )
+
+
+
+class Competence(models.Model):
     """Модель Soft и Hard компетенций."""
 
     COMPETENCE_CHOICES = [
-        ('Soft skills', 'Софт скилы'),
-        ('Hard skills', 'Хард скилы'),
+        ('Soft skills', 'Soft skills'),
+        ('Hard skills', 'Hard skills'),
     ]
     name = models.CharField(
         max_length=100,
+        unique=True,
         verbose_name='Название',
     )
-    type = models.CharField(max_length=20, choices=COMPETENCE_CHOICES)
+    type = models.CharField(
+        max_length=11,
+        choices=COMPETENCE_CHOICES,
+        verbose_name='Тип скилла',
+    )
 
     class Meta:
-        verbose_name_plural = 'ljlel'
+        verbose_name = 'Компетенция'
+        verbose_name_plural = 'Компетенции'
+        ordering = ('pk',)
 
 
-class SkillTable(models.Model):
-    """Модель чего?."""
+class Skill(models.Model):
+    """Модель скилла."""
 
     name = models.CharField(
         max_length=100,
+        unique=True,
         verbose_name='Название',
     )
     competence = models.ForeignKey(
-        CompetenceTable,
+        Competence,
         on_delete=models.CASCADE,
+        related_name='skills',
+        verbose_name='Компетенция',
     )
 
     class Meta:
-        verbose_name_plural = 'ljlel'
+        verbose_name = 'Скилл'
+        verbose_name_plural = 'Скиллы'
+        ordering = ('pk',)
 
 
-class TrackingRequestsTable(models.Model):
-    """Модель отслеживания запросов."""
+class TrainigRequest(models.Model):
+    """
+    Модель отслеживания запросов,
+     на повышение квалификации.
+    """
 
     TICKET_CHOICES = [
         ('worker', 'Работник'),
@@ -108,96 +153,118 @@ class TrackingRequestsTable(models.Model):
         ('in_process', 'в процессе'),
     ]
     employee = models.ForeignKey(
-        EmployeeTable,
+        Employee,
         on_delete=models.CASCADE,
+        verbose_name='Сотрудник',
     )
     skill = models.ForeignKey(
-        SkillTable,
+        Skill,
         on_delete=models.CASCADE,
+        verbose_name='Навык',
     )
-    desired_score = models.SmallIntegerField()
-    ticket_source = models.CharField(max_length=20, choices=TICKET_CHOICES)
-    start_date = models.DateTimeField('Добавлено', auto_now_add=True)
-    end_date = models.DateTimeField('Добавлено', auto_now_add=True)
-    notes = models.CharField(max_length=20)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
-
-    class Meta:
-        verbose_name_plural = 'ljlel'
-
-
-class TeamTable(models.Model):
-    """Модель чего?. """
-
-    name = models.CharField(
-        max_length=100,
-        verbose_name='Название',
-    )
-
-    class Meta:
-        verbose_name_plural = 'ljlel'
-
-
-class EmployeeTeamTable(models.Model):
-    """Модель команды сотрудников."""
-
-    employee = models.ForeignKey(
-        EmployeeTable,
-        on_delete=models.CASCADE,)
-    team = models.ForeignKey(
-        TeamTable,
-        on_delete=models.CASCADE,)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(
-                fields=['employee', 'team'],
-                name='unique_employee_team'
+    desired_score = models.PositiveSmallIntegerField(
+        validators=[
+            MaxValueValidator(
+                1,
+                message='Оценка не может быть меньше 1'
+            ),
+            MinValueValidator(
+                5,
+                message='Оценка не может быть больше 5'
             )
-        ]
+        ],
+        verbose_name='Желаемая оценка сотрудника',
+    )
+    ticket_source = models.CharField(
+        max_length=20, 
+        choices=TICKET_CHOICES,
+        verbose_name='Тикет откуда',
+        )
+    start_date = models.DateField(
+        verbose_name='Дата начала обучения',
+        )
+    end_date = models.DateField(
+        verbose_name='Дата окончания обучения',
+        )
+    note = models.CharField(
+        max_length=255,
+        verbose_name='Заметка',
+        )
+    status = models.CharField(
+        max_length=20, 
+        choices=STATUS_CHOICES,
+        verbose_name='Статус',
+        )
+
+    class Meta:
+        verbose_name = 'Запрос'
+        verbose_name_plural = 'Запросы'
+        ordering = ('pk',)
 
 
-class PositionRequirementsTable(models.Model):
+class PositionRequirement(models.Model):
+    """Модель требований для позиции (должности)."""
 
-    """Модель чего?."""
     position = models.ForeignKey(
-        PositionTable,
+        Position,
         on_delete=models.CASCADE,
+        verbose_name='Должность',
     )
     grade = models.ForeignKey(
-        GradeTable,
+        Grade,
         on_delete=models.CASCADE,
+        verbose_name='Грейд',
     )
     skill = models.ForeignKey(
-        SkillTable,
+        Skill,
         on_delete=models.CASCADE,
+        verbose_name='Скилл',
     )
-    score = models.SmallIntegerField(verbose_name='Эталонная оценка',)
+    score = models.PositiveSmallIntegerField(
+        validators=[
+            MaxValueValidator(
+                1,
+                message='Оценка не может быть меньше 1'
+            ),
+            MinValueValidator(
+                5,
+                message='Оценка не может быть больше 5'
+            )
+        ],
+        verbose_name='Эталонная оценка',
+    )
 
     class Meta:
-        verbose_name_plural = 'ljlel'
+        verbose_name = 'Требования к позиции'
+        verbose_name_plural = 'Требования к позиции'
 
 
-class TargetTable(models.Model):
-    """Модель чего?"""
+class Target(models.Model):
+    """Модель карьерной цели сотрудника."""
 
-    employee = models.OneToOneField(EmployeeTable, on_delete=models.CASCADE,)
+    employee = models.OneToOneField(
+        Employee,
+        on_delete=models.CASCADE,
+        verbose_name='Сотрудник'
+    )
     position = models.ForeignKey(
-        PositionTable,
+        Position,
         on_delete=models.CASCADE,
+        verbose_name='Должность'
     )
-    bus_factor = models.BooleanField()
     grade = models.ForeignKey(
-        GradeTable,
+        Grade,
         on_delete=models.CASCADE,
+        verbose_name='Грейд'
     )
 
     class Meta:
-        verbose_name_plural = 'ljlel'
+        verbose_name = 'Карьерная цель'
+        verbose_name_plural = 'Карьерные цели'
 
 
-class LevelTable(models.Model):
-    """Модель чего?"""
+class Level(models.Model):
+    """Модель текущего уровня сотрудника."""
 
     LEVEL_NAME_CHOICES = [
         ('Начинающий', 'Начинающий'),
@@ -206,19 +273,43 @@ class LevelTable(models.Model):
         ('Экспертный', 'Экспертный'),
     ]
     LEVEL_ACCORDANCE_CHOICES = [
-        ('Да', 'Начинающий'),
-        ('Нет', 'Базовый'),
-        ('Не требуется', 'Уверенный'),
+        ('Да', 'Да'),
+        ('Нет', 'Нет'),
+        ('Не требуется', 'Не требуется'),
     ]
     employee = models.ForeignKey(
-        EmployeeTable,
-        on_delete=models.CASCADE,)
-    skill = models.ForeignKey(
-        SkillTable,
+        Employee,
         on_delete=models.CASCADE,
+        verbose_name='сотрудник',
     )
-    date = models.DateTimeField('Добавлено', auto_now_add=True)
-    score = models.SmallIntegerField(verbose_name='Эталонная оценка',)
-    name = models.CharField(max_length=20, choices=LEVEL_NAME_CHOICES)
-    accordance = models.CharField(max_length=20, choices=LEVEL_ACCORDANCE_CHOICES)
-
+    skill = models.ForeignKey(
+        Skill,
+        on_delete=models.CASCADE,
+        verbose_name='Скилл',
+    )
+    date = models.DateField(
+        verbose_name='Добавлено',
+    )
+    score = models.PositiveSmallIntegerField(
+        validators=[
+            MaxValueValidator(
+                1,
+                message='Оценка не может быть меньше 1'
+            ),
+            MinValueValidator(
+                5,
+                message='Оценка не может быть больше 5'
+            )
+        ],
+        verbose_name='Эталонная оценка',
+    )
+    name = models.CharField(
+        max_length=20,
+        choices=LEVEL_NAME_CHOICES,
+        verbose_name='Оценка на словах',
+    )
+    accordance = models.CharField(
+        max_length=20,
+        choices=LEVEL_ACCORDANCE_CHOICES,
+        verbose_name='Соответствие',
+    )
