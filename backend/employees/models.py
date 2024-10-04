@@ -195,6 +195,12 @@ class TrainigRequest(models.Model):
         choices=STATUS_CHOICES,
         verbose_name='Статус',
         )
+    # actual_hours = models.PositiveSmallIntegerField(
+    #     verbose_name='Часов по факту',
+    # )
+    # planned_hours = models.PositiveSmallIntegerField(
+    #     verbose_name='Запланированные часы',
+    # )
 
     class Meta:
         verbose_name = 'Запрос'
