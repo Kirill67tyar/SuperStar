@@ -290,15 +290,28 @@ with pd.ExcelFile(file_path, engine='openpyxl') as xls:
 # ! =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= training_requests
 #? изменить модели TrainigRequest, добавить две колонки с часами
 #? распарсить и загрузить файл
-training_requests = 'tempr_data/training_requests.xlsx'
-with pd.ExcelFile(training_requests, engine='openpyxl') as xls:
-    pass
-    columns_to_load = [
-        "сотрудник",
-        "должность",
-        "уровень должности",
-    ]
+# training_requests = 'tempr_data/training_requests.xlsx'
+# with pd.ExcelFile(training_requests, engine='openpyxl') as xls:
+#     pass
+#     columns_to_load = [
+#         "номер заявки",
+#         "сотрудник",
+#         "навык",
+#         "Название",
+#         "тикет откуда",
+#         "дата",
+#         "дата закрытия",
+#         "ответственный",
+#         "Примечание",
+#         "Статус",
+#         "Часов_факт",
+#         "Часов_план",
+#     ]
 
-    df = pd.read_excel(xls, sheet_name=0, usecols=columns_to_load)
-    training_requests_dict = df.to_dict(orient='records')
+#     df = pd.read_excel(xls, sheet_name=0, usecols=columns_to_load)
+#     df['дата'] = df['дата'].apply(lambda x: x.strftime('%Y-%m-%d') if pd.notnull(x) else None)
+#     df['дата закрытия'] = df['дата закрытия'].apply(lambda x: x.strftime('%Y-%m-%d') if pd.notnull(x) else None)
+#     training_requests_dict = df.to_dict(orient='records')
+#     with open(f'../draft/training_requests_dict.json', 'w', encoding='utf-8') as json_file:
+#         json.dump(training_requests_dict, json_file, indent=4, ensure_ascii=False)
 # ! =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

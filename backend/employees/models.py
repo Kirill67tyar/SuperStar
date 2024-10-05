@@ -20,6 +20,9 @@ class Grade(models.Model):
         verbose_name = 'Домен'
         verbose_name_plural = 'Домены'
         ordering = ('pk',)
+    
+    def __str__(self):
+        return self.name
 
 
 class Position(models.Model):
@@ -35,7 +38,8 @@ class Position(models.Model):
         verbose_name = 'Должность'
         verbose_name_plural = 'Должности'
         ordering = ('pk',)
-
+    def __str__(self):
+        return self.name
 
 class Team(models.Model):
     """Модель команды."""
@@ -49,6 +53,9 @@ class Team(models.Model):
     class Meta:
         verbose_name = 'Команда'
         verbose_name_plural = 'Команды'
+
+    def __str__(self):
+            return self.name
 
 
 class Employee(models.Model):
@@ -87,6 +94,8 @@ class Employee(models.Model):
         verbose_name_plural = 'Сотрудники'
         ordering = ('pk', )
 
+    def __str__(self):
+            return self.name
 
 
 class Competence(models.Model):
@@ -112,6 +121,9 @@ class Competence(models.Model):
         verbose_name_plural = 'Компетенции'
         ordering = ('pk',)
 
+    def __str__(self):
+            return self.name
+
 
 class Skill(models.Model):
     """Модель скилла."""
@@ -133,6 +145,9 @@ class Skill(models.Model):
         verbose_name_plural = 'Скиллы'
         ordering = ('pk',)
 
+    def __str__(self):
+            return self.name
+
 
 class TrainigRequest(models.Model):
     """
@@ -150,6 +165,7 @@ class TrainigRequest(models.Model):
         ('on_discussion', 'на согласовании'),
         ('approved', 'одобрено'),
         ('cancellation', 'отмена'),
+        ('denied', 'отказано'),
         ('in_process', 'в процессе'),
     ]
     employee = models.ForeignKey(
@@ -164,11 +180,11 @@ class TrainigRequest(models.Model):
     )
     desired_score = models.PositiveSmallIntegerField(
         validators=[
-            MaxValueValidator(
+            MinValueValidator(
                 1,
                 message='Оценка не может быть меньше 1'
             ),
-            MinValueValidator(
+            MaxValueValidator(
                 5,
                 message='Оценка не может быть больше 5'
             )
@@ -185,6 +201,8 @@ class TrainigRequest(models.Model):
         )
     end_date = models.DateField(
         verbose_name='Дата окончания обучения',
+        blank=True,
+        null=True,
         )
     note = models.CharField(
         max_length=255,
@@ -195,17 +213,20 @@ class TrainigRequest(models.Model):
         choices=STATUS_CHOICES,
         verbose_name='Статус',
         )
-    # actual_hours = models.PositiveSmallIntegerField(
-    #     verbose_name='Часов по факту',
-    # )
-    # planned_hours = models.PositiveSmallIntegerField(
-    #     verbose_name='Запланированные часы',
-    # )
+    actual_hours = models.PositiveSmallIntegerField(
+        verbose_name='Часов по факту',
+    )
+    planned_hours = models.PositiveSmallIntegerField(
+        verbose_name='Запланированные часы',
+    )
 
     class Meta:
         verbose_name = 'Запрос'
         verbose_name_plural = 'Запросы'
         ordering = ('pk',)
+
+    def __str__(self):
+        return str(self.pk)
 
 
 class PositionRequirement(models.Model):
@@ -244,6 +265,9 @@ class PositionRequirement(models.Model):
         verbose_name = 'Требования к позиции'
         verbose_name_plural = 'Требования к позиции'
 
+    def __str__(self):
+        return str(self.pk)
+
 
 class Target(models.Model):
     """Модель карьерной цели сотрудника."""
@@ -267,6 +291,9 @@ class Target(models.Model):
     class Meta:
         verbose_name = 'Карьерная цель'
         verbose_name_plural = 'Карьерные цели'
+
+    def __str__(self):
+        return str(self.pk)
 
 
 class Level(models.Model):
@@ -309,7 +336,7 @@ class Level(models.Model):
         ],
         verbose_name='Эталонная оценка',
     )
-    name = models.CharField(
+    level_score = models.CharField(
         max_length=20,
         choices=LEVEL_NAME_CHOICES,
         verbose_name='Оценка на словах',
@@ -319,3 +346,7 @@ class Level(models.Model):
         choices=LEVEL_ACCORDANCE_CHOICES,
         verbose_name='Соответствие',
     )
+
+    def __str__(self):
+        return str(self.pk)
+
