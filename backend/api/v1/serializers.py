@@ -53,6 +53,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     grade = serializers.StringRelatedField(read_only=True)
     team = serializers.StringRelatedField(many=True, read_only=True)
     skills = serializers.SerializerMethodField(read_only=True)
+    
 
     class Meta:
         model = Employee
@@ -67,28 +68,45 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
         )
 
     def get_skills(self, obj):
+        
         skills_data = {}
-        latest_scores = obj.levels.filter(
-            skill=OuterRef('skill')
-        ).order_by('-date').values('score')[:1]
+        # ! =-=-=-=-=-=-=-= старый вариант
+        # for level in obj.levels.all():
+        #     if level.skill.name not in skills_data:
+        #         skills_data[level.skill.name] = {
+        #             # 'competence': level.skill.competence.type,
+        #             'score': level.latest_score,
+        #             'growth': level.latest_score > level.penultimate_score
+        #         }
+        # ! =-=-=-=-=-=-=-= старый вариант
+        # ? =-=-=-=-=-=-=-= последний вариант
+        for level in obj.levels.all():
+            competence_type = level.skill.competence.type
+            if competence_type in skills_data:
+                if level.skill.name not in skills_data[competence_type]:
+                    level_dict = {level.skill.name: {
+                        'score': level.latest_score,
+                        'growth': level.latest_score > level.penultimate_score,
+                        # 'accordance': level.score >= level.penultimate_score,
+                    }}
+                    skills_data[competence_type].update(level_dict)
+            else:
+                skills_data[competence_type] = {}
 
-        penultimate_scores = obj.levels.filter(
-            skill=OuterRef('skill')
-        ).order_by('-date').values('score')[1:2]
-
-        skills_with_scores = (
-            obj.levels
-            # .values('skill__name')
-            .annotate(
-                latest_score=Subquery(latest_scores),
-                penultimate_score=Coalesce(
-                    Subquery(penultimate_scores), 5)
-            )
-            .distinct()
-        )
-        for skill in skills_with_scores:
-            skills_data[skill['skill__name']] = {
-                'score': skill['latest_score'],
-                'growth': skill['latest_score'] > skill['penultimate_score']
-            }
+        # ? =-=-=-=-=-=-=-= последний вариант
         return skills_data
+
+
+class TeamModelSerializer(serializers.ModelSerializer):
+    team_members = EmployeeModelSerializer(
+        many=True,
+        read_only=True,
+        source='employees',
+    )
+
+    class Meta:
+        model = Team
+        fields = (
+            'name',
+            'team_members',
+        )

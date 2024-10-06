@@ -82,7 +82,7 @@ class Employee(models.Model):
     )
     team = models.ManyToManyField(
         Team,
-        # related_name='employees'
+        related_name='employees',
         verbose_name='Команды',
     )
     created = models.DateField(
@@ -245,6 +245,7 @@ class PositionRequirement(models.Model):
     skill = models.ForeignKey(
         Skill,
         on_delete=models.CASCADE,
+        related_name='requirements',
         verbose_name='Скилл',
     )
     score = models.PositiveSmallIntegerField(
