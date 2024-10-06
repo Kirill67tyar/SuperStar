@@ -249,11 +249,11 @@ class PositionRequirement(models.Model):
     )
     score = models.PositiveSmallIntegerField(
         validators=[
-            MaxValueValidator(
+            MinValueValidator(
                 1,
                 message='Оценка не может быть меньше 1'
             ),
-            MinValueValidator(
+            MaxValueValidator(
                 5,
                 message='Оценка не может быть больше 5'
             )
@@ -313,6 +313,7 @@ class Level(models.Model):
     employee = models.ForeignKey(
         Employee,
         on_delete=models.CASCADE,
+        related_name='levels',
         verbose_name='сотрудник',
     )
     skill = models.ForeignKey(
@@ -325,11 +326,11 @@ class Level(models.Model):
     )
     score = models.PositiveSmallIntegerField(
         validators=[
-            MaxValueValidator(
+            MinValueValidator(
                 1,
                 message='Оценка не может быть меньше 1'
             ),
-            MinValueValidator(
+            MaxValueValidator(
                 5,
                 message='Оценка не может быть больше 5'
             )
