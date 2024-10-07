@@ -53,7 +53,6 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     grade = serializers.StringRelatedField(read_only=True)
     team = serializers.StringRelatedField(many=True, read_only=True)
     skills = serializers.SerializerMethodField(read_only=True)
-    
 
     class Meta:
         model = Employee
@@ -67,8 +66,39 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
             'skills',
         )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        requirements_for_position = PositionRequirement.objects.select_related(
+            'position',
+            'grade',
+            'skill',
+        ).values(
+            'position__name',
+            'grade__name',
+            'skill__name',
+            'score'
+        )
+        requirement_data = {}
+
+        for p in requirements_for_position:
+
+            requirement_data[p['position__name']] = (
+                requirement_data
+                .get(p['position__name'], {})
+            )
+            requirement_data[p['position__name']][p['grade__name']] = (
+                requirement_data
+                [p['position__name']]
+                .get(p['grade__name'], {})
+            )
+            (requirement_data
+             [p['position__name']]
+             [p['grade__name']]
+             .update({p['skill__name']: p['score']}))
+        self.requirement_data = requirement_data
+
     def get_skills(self, obj):
-        
+
         skills_data = {}
         # ! =-=-=-=-=-=-=-= старый вариант
         # for level in obj.levels.all():
@@ -87,12 +117,21 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
                     level_dict = {level.skill.name: {
                         'score': level.latest_score,
                         'growth': level.latest_score > level.penultimate_score,
-                        # 'accordance': level.score >= level.penultimate_score,
                     }}
+                    
+                    reqirement_score = self.requirement_data[obj.position.name][obj.grade.name].get(
+                            level.skill.name)
+                    accordance = None
+                    if reqirement_score:
+                        accordance = level.latest_score >= reqirement_score
+                    level_dict[level.skill.name].update(
+                        {
+                            'accordance': accordance,
+                        }
+                    )
                     skills_data[competence_type].update(level_dict)
             else:
                 skills_data[competence_type] = {}
-
         # ? =-=-=-=-=-=-=-= последний вариант
         return skills_data
 
@@ -110,3 +149,17 @@ class TeamModelSerializer(serializers.ModelSerializer):
             'name',
             'team_members',
         )
+
+    # def to_representation(self, instance):
+    #     # Получаем стандартное представление данных
+    #     representation = super().to_representation(instance)
+
+    #     # Пример, если необходимо что-то добавить в представление
+    #     # передаем все что необходимо в контексте для вложенного сериалайзера
+    #     representation['team_members'] = EmployeeModelSerializer(
+    #         many=True,
+    #         source='employees',
+    #         context=self.context,  # Передаем контекст
+    #     ).data
+
+    #     return representation

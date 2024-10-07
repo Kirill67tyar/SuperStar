@@ -235,11 +235,13 @@ class PositionRequirement(models.Model):
     position = models.ForeignKey(
         Position,
         on_delete=models.CASCADE,
+        related_name='requirements_position',
         verbose_name='Должность',
     )
     grade = models.ForeignKey(
         Grade,
         on_delete=models.CASCADE,
+        related_name='requirements_grade',
         verbose_name='Грейд',
     )
     skill = models.ForeignKey(

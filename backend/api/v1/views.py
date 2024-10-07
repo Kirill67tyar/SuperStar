@@ -1,4 +1,4 @@
-from django.db.models import OuterRef, Subquery, Prefetch
+from django.db.models import OuterRef, Subquery, Prefetch, Q
 from django.db.models.functions import Coalesce
 from django.db.models import Max, F
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, GenericViewSet
@@ -9,6 +9,7 @@ from employees.models import (
     Employee,
     Level,
     Team,
+    PositionRequirement,
 )
 from api.v1.filters import EmployeeFilter, TeamFilter
 from api.v1.serializers import (
@@ -76,6 +77,7 @@ class TeamListModelViewSet(mixins.ListModelMixin,
     filter_backends = [DjangoFilterBackend,]
     filterset_class = TeamFilter
 
+
     def get_queryset(self):
         # Подзапрос для получения последней оценки
         latest_scores = Level.objects.filter(
@@ -103,10 +105,34 @@ class TeamListModelViewSet(mixins.ListModelMixin,
                     Subquery(penultimate_scores), 5)
             )
         )
-        team_members = Employee.objects.select_related('position', 'grade').prefetch_related(
-            'team',
-            Prefetch('levels', queryset=skills_with_scores)
+        # ! =-=-=-=-=
+        # position_requirement_subquery = PositionRequirement.objects.filter(
+        #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
+        #         ).values('skill', 'score')
+        position_requirement_subquery = PositionRequirement.objects.filter(
+            Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
         )
+        # ! =-=-=-=-=
+        team_members = (
+            Employee.objects
+            .select_related('position', 'grade')
+            .prefetch_related(
+                'team',
+                # 'position__requirements_position',  # или такой вариант
+                Prefetch('levels', queryset=skills_with_scores),
+                # Prefetch('position__requirements_position', queryset=position_requirement_subquery, to_attr='position_requirements')
+            )
+            # .annotate(
+            #     position_requirements=Subquery(
+            #         position_requirements_subquery
+            #         # .values('id')
+            #     )
+            # )
+        )
+        # team_members = Employee.objects.select_related('position', 'grade').prefetch_related(
+        #     'team',
+        #     Prefetch('levels', queryset=skills_with_scores)
+        # )
         return self.queryset.prefetch_related(
             Prefetch(
                 'employees',
