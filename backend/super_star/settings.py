@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_extensions',
+    'django_filters',
     'debug_toolbar',
     'api.apps.ApiConfig',
     'employees.apps.EmployeesConfig',
@@ -103,6 +104,10 @@ REST_FRAMEWORK = {
     # 'DEFAULT_RENDERER_CLASSES': (
     #     'rest_framework.renderers.JSONRenderer',
     # ),
+    # 'DEFAULT_FILTER_BACKENDS': [
+    #     'django_filters.rest_framework.DjangoFilterBackend'
+    # ],
+
 }
 
 CORS_ALLOW_ALL_ORIGINS = True

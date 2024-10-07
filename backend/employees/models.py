@@ -82,7 +82,7 @@ class Employee(models.Model):
     )
     team = models.ManyToManyField(
         Team,
-        # related_name='employees'
+        related_name='employees',
         verbose_name='Команды',
     )
     created = models.DateField(
@@ -235,25 +235,28 @@ class PositionRequirement(models.Model):
     position = models.ForeignKey(
         Position,
         on_delete=models.CASCADE,
+        related_name='requirements_position',
         verbose_name='Должность',
     )
     grade = models.ForeignKey(
         Grade,
         on_delete=models.CASCADE,
+        related_name='requirements_grade',
         verbose_name='Грейд',
     )
     skill = models.ForeignKey(
         Skill,
         on_delete=models.CASCADE,
+        related_name='requirements',
         verbose_name='Скилл',
     )
     score = models.PositiveSmallIntegerField(
         validators=[
-            MaxValueValidator(
+            MinValueValidator(
                 1,
                 message='Оценка не может быть меньше 1'
             ),
-            MinValueValidator(
+            MaxValueValidator(
                 5,
                 message='Оценка не может быть больше 5'
             )
@@ -313,6 +316,7 @@ class Level(models.Model):
     employee = models.ForeignKey(
         Employee,
         on_delete=models.CASCADE,
+        related_name='levels',
         verbose_name='сотрудник',
     )
     skill = models.ForeignKey(
@@ -325,11 +329,11 @@ class Level(models.Model):
     )
     score = models.PositiveSmallIntegerField(
         validators=[
-            MaxValueValidator(
+            MinValueValidator(
                 1,
                 message='Оценка не может быть меньше 1'
             ),
-            MinValueValidator(
+            MaxValueValidator(
                 5,
                 message='Оценка не может быть больше 5'
             )
