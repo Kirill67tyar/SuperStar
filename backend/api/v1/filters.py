@@ -27,9 +27,9 @@ class EmployeeFilter(FilterSet):
         queryset=Grade.objects.all(),
         to_field_name='name',
     )
-    skill = ModelMultipleChoiceFilter(
-        field_name='levels__skill__name',  # Фильтрация через related field
-        queryset=Skill.objects.all(),      # Используем Skill для фильтрации
+    skill = ModelMultipleChoiceFilter(  # ! не работает
+        field_name='levels__skill__name',
+        queryset=Skill.objects.all(),
         to_field_name='name',
     )
 

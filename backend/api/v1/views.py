@@ -94,6 +94,7 @@ class TeamListModelViewSet(mixins.ListModelMixin,
             skill=OuterRef('skill'),
             employee=OuterRef('employee')
         ).order_by('-date').values('score')[1:2]
+        
 
         # Запрос для получения всех уровней с аннотациями
         skills_with_scores = (
@@ -143,6 +144,70 @@ class TeamListModelViewSet(mixins.ListModelMixin,
                 queryset=team_members,
             )
         )
+    # def get_queryset(self):
+    #     # self.request.query_params
+    #     # Подзапрос для получения последней оценки
+    #     a = 1
+    #     latest_scores = Level.objects.filter(
+    #         skill=OuterRef('skill'),
+    #         employee=OuterRef('employee')
+    #     ).order_by('-date').values('score')[:1]
+
+    #     # Подзапрос для получения предпоследней оценки
+    #     penultimate_scores = Level.objects.filter(
+    #         skill=OuterRef('skill'),
+    #         employee=OuterRef('employee')
+    #     ).order_by('-date').values('score')[1:2]
+        
+
+    #     # Запрос для получения всех уровней с аннотациями
+    #     skills_with_scores = (
+    #         Level.objects
+    #         .select_related(
+    #             'employee',
+    #             'skill',
+    #             'skill__competence',
+    #         )
+    #         .annotate(
+    #             latest_score=Subquery(latest_scores),
+    #             penultimate_score=Coalesce(
+    #                 Subquery(penultimate_scores), 5)
+    #         )
+    #     )
+    #     # ! =-=-=-=-=
+    #     # position_requirement_subquery = PositionRequirement.objects.filter(
+    #     #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
+    #     #         ).values('skill', 'score')
+    #     position_requirement_subquery = PositionRequirement.objects.filter(
+    #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
+    #     )
+    #     # ! =-=-=-=-=
+    #     team_members = (
+    #         Employee.objects
+    #         .select_related('position', 'grade')
+    #         .prefetch_related(
+    #             'team',
+    #             # 'position__requirements_position',  # или такой вариант
+    #             Prefetch('levels', queryset=skills_with_scores),
+    #             # Prefetch('position__requirements_position', queryset=position_requirement_subquery, to_attr='position_requirements')
+    #         )
+    #         # .annotate(
+    #         #     position_requirements=Subquery(
+    #         #         position_requirements_subquery
+    #         #         # .values('id')
+    #         #     )
+    #         # )
+    #     )
+    #     # team_members = Employee.objects.select_related('position', 'grade').prefetch_related(
+    #     #     'team',
+    #     #     Prefetch('levels', queryset=skills_with_scores)
+    #     # )
+    #     return self.queryset.prefetch_related(
+    #         Prefetch(
+    #             'employees',
+    #             queryset=team_members,
+    #         )
+    #     )
 
 
 class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
@@ -157,72 +222,60 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
     filter_backends = (DjangoFilterBackend,)
     filterset_class = EmployeeFilter
 
-    # def get_queryset(self):
-    #     # Подзапрос для получения последней оценки
-    #     latest_scores = Level.objects.filter(
-    #         skill=OuterRef('skill'),
-    #         employee=OuterRef('employee')
-    #     ).order_by('-date').values('score')[:1]
 
-    #     # Подзапрос для получения предпоследней оценки
-    #     penultimate_scores = Level.objects.filter(
-    #         skill=OuterRef('skill'),
-    #         employee=OuterRef('employee')
-    #     ).order_by('-date').values('score')[1:2]
-
-    #     # Запрос для получения всех уровней с аннотациями
-    #     skills_with_scores = (
-    #         Level.objects
-    #         .select_related('employee', 'skill')
-    #         .annotate(
-    #             latest_score=Subquery(latest_scores),
-    #             penultimate_score=Coalesce(
-    #                 Subquery(penultimate_scores), 5)
-    #         )
-    #         # # distinct('skill') по идее должно работать на postgres
-    #         # # когда подключим к postgres, код который в сериалайзере
-    #         # # убирает лишние level будет не нужен
-    #         # .distinct('skill')
-    #     )
-    #     return self.queryset.prefetch_related(
-    #         'team',
-    #         Prefetch('levels', queryset=skills_with_scores)
-    #     )
     def get_queryset(self):
-        # self.request.query_params
-        # Подзапрос для получения последней оценки
-        latest_scores = Level.objects.filter(
+        queryset = super().get_queryset()
+        # Подзапрос для получения последних и предпоследних уровней
+        latest_levels = Level.objects.filter(
             skill=OuterRef('skill'),
             employee=OuterRef('employee')
-        ).order_by('-date').values('score')[:1]
+        ).order_by('-date').values('date')[:1]
 
-        # Подзапрос для получения предпоследней оценки
-        penultimate_scores = Level.objects.filter(
+        penultimate_levels = Level.objects.filter(
             skill=OuterRef('skill'),
             employee=OuterRef('employee')
-        ).order_by('-date').values('score')[1:2]
+        ).order_by('-date').values('date')[1:2]
 
-        # Запрос для получения всех уровней с аннотациями
+        # Запрос для получения уровней с аннотациями
         skills_with_scores = (
             Level.objects
+            .filter(
+                Q(date=Subquery(latest_levels)) | Q(date=Subquery(penultimate_levels))
+            )
             .select_related(
-                'employee',
                 'skill',
                 'skill__competence',
-            )
+                )
             .annotate(
-                latest_score=Subquery(latest_scores),
+                latest_score=Subquery(
+                    Level.objects.filter(
+                        skill=OuterRef('skill'),
+                        employee=OuterRef('employee'),
+                        date=Subquery(latest_levels)
+                    ).values('score')[:1]
+                ),
                 penultimate_score=Coalesce(
-                    Subquery(penultimate_scores), 5)
+                    Subquery(
+                        Level.objects.filter(
+                            skill=OuterRef('skill'),
+                            employee=OuterRef('employee'),
+                            date=Subquery(penultimate_levels)
+                        ).values('score')[:1]
+                    ), 1
+                )
             )
         )
+
+        # Запрос для получения сотрудников с предустановленными уровнями
         queryset = (
-            self.queryset
+            queryset
+            # .select_related('position', 'grade')
             .prefetch_related(
                 'team',
-                Prefetch('levels', queryset=skills_with_scores),
+                Prefetch('levels', queryset=skills_with_scores, to_attr='filtered_levels')
             )
         )
+
         return queryset
 
     def list(self, request, *args, **kwargs):
