@@ -1,3 +1,5 @@
+from rest_framework import status
+from rest_framework.response import Response
 from django.db.models import OuterRef, Subquery, Prefetch, Q
 from django.db.models.functions import Coalesce
 from django.db.models import Max, F
@@ -15,6 +17,7 @@ from api.v1.filters import EmployeeFilter, TeamFilter
 from api.v1.serializers import (
     EmployeeModelSerializer,
     TeamModelSerializer,
+    TeamGroupedSerializer,
 )
 
 
@@ -77,9 +80,10 @@ class TeamListModelViewSet(mixins.ListModelMixin,
     filter_backends = [DjangoFilterBackend,]
     filterset_class = TeamFilter
 
-
     def get_queryset(self):
+        # self.request.query_params
         # Подзапрос для получения последней оценки
+        a = 1
         latest_scores = Level.objects.filter(
             skill=OuterRef('skill'),
             employee=OuterRef('employee')
@@ -139,3 +143,115 @@ class TeamListModelViewSet(mixins.ListModelMixin,
                 queryset=team_members,
             )
         )
+
+
+class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
+                                    GenericViewSet,):
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    serializer_class = EmployeeModelSerializer
+    queryset = (Employee.objects
+                .select_related('position', 'grade'))
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = EmployeeFilter
+
+    # def get_queryset(self):
+    #     # Подзапрос для получения последней оценки
+    #     latest_scores = Level.objects.filter(
+    #         skill=OuterRef('skill'),
+    #         employee=OuterRef('employee')
+    #     ).order_by('-date').values('score')[:1]
+
+    #     # Подзапрос для получения предпоследней оценки
+    #     penultimate_scores = Level.objects.filter(
+    #         skill=OuterRef('skill'),
+    #         employee=OuterRef('employee')
+    #     ).order_by('-date').values('score')[1:2]
+
+    #     # Запрос для получения всех уровней с аннотациями
+    #     skills_with_scores = (
+    #         Level.objects
+    #         .select_related('employee', 'skill')
+    #         .annotate(
+    #             latest_score=Subquery(latest_scores),
+    #             penultimate_score=Coalesce(
+    #                 Subquery(penultimate_scores), 5)
+    #         )
+    #         # # distinct('skill') по идее должно работать на postgres
+    #         # # когда подключим к postgres, код который в сериалайзере
+    #         # # убирает лишние level будет не нужен
+    #         # .distinct('skill')
+    #     )
+    #     return self.queryset.prefetch_related(
+    #         'team',
+    #         Prefetch('levels', queryset=skills_with_scores)
+    #     )
+    def get_queryset(self):
+        # self.request.query_params
+        # Подзапрос для получения последней оценки
+        latest_scores = Level.objects.filter(
+            skill=OuterRef('skill'),
+            employee=OuterRef('employee')
+        ).order_by('-date').values('score')[:1]
+
+        # Подзапрос для получения предпоследней оценки
+        penultimate_scores = Level.objects.filter(
+            skill=OuterRef('skill'),
+            employee=OuterRef('employee')
+        ).order_by('-date').values('score')[1:2]
+
+        # Запрос для получения всех уровней с аннотациями
+        skills_with_scores = (
+            Level.objects
+            .select_related(
+                'employee',
+                'skill',
+                'skill__competence',
+            )
+            .annotate(
+                latest_score=Subquery(latest_scores),
+                penultimate_score=Coalesce(
+                    Subquery(penultimate_scores), 5)
+            )
+        )
+        queryset = (
+            self.queryset
+            .prefetch_related(
+                'team',
+                Prefetch('levels', queryset=skills_with_scores),
+            )
+        )
+        return queryset
+
+    def list(self, request, *args, **kwargs):
+        # Получаем всех сотрудников с учётом фильтров и предвыборкой команд
+        employees = self.filter_queryset(
+            self.get_queryset()  # Оптимизация для избежания n+1 проблемы
+        )
+        # employees = self.get_queryset()  # Оптимизация для избежания n+1 проблемы
+
+        # Получаем все уникальные команды, к которым относятся сотрудники
+        # teams = Team.objects.prefetch_related('employees').filter(employees__in=employees).distinct()
+        teams = (
+            Team.objects
+            .prefetch_related(
+                Prefetch(
+                    'employees',
+                    queryset=employees,
+                )
+            )
+            .filter(employees__in=employees)
+            .distinct()
+        )
+
+        # Сериализуем данные по командам, передавая сотрудников через context
+        serializer = TeamGroupedSerializer(
+            teams, 
+            many=True, 
+            context={'employees': employees})
+        return Response(
+            serializer.data,
+            status=status.HTTP_200_OK
+            )

@@ -100,16 +100,6 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     def get_skills(self, obj):
 
         skills_data = {}
-        # ! =-=-=-=-=-=-=-= старый вариант
-        # for level in obj.levels.all():
-        #     if level.skill.name not in skills_data:
-        #         skills_data[level.skill.name] = {
-        #             # 'competence': level.skill.competence.type,
-        #             'score': level.latest_score,
-        #             'growth': level.latest_score > level.penultimate_score
-        #         }
-        # ! =-=-=-=-=-=-=-= старый вариант
-        # ? =-=-=-=-=-=-=-= последний вариант
         for level in obj.levels.all():
             competence_type = level.skill.competence.type
             if competence_type in skills_data:
@@ -129,10 +119,10 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
                             'accordance': accordance,
                         }
                     )
+
                     skills_data[competence_type].update(level_dict)
             else:
                 skills_data[competence_type] = {}
-        # ? =-=-=-=-=-=-=-= последний вариант
         return skills_data
 
 
@@ -150,16 +140,19 @@ class TeamModelSerializer(serializers.ModelSerializer):
             'team_members',
         )
 
-    # def to_representation(self, instance):
-    #     # Получаем стандартное представление данных
-    #     representation = super().to_representation(instance)
 
-    #     # Пример, если необходимо что-то добавить в представление
-    #     # передаем все что необходимо в контексте для вложенного сериалайзера
-    #     representation['team_members'] = EmployeeModelSerializer(
-    #         many=True,
-    #         source='employees',
-    #         context=self.context,  # Передаем контекст
-    #     ).data
 
-    #     return representation
+class TeamGroupedSerializer(serializers.Serializer):
+    name = serializers.CharField()
+    # team_members = serializers.SerializerMethodField()
+    team_members = EmployeeModelSerializer(
+        many=True,
+        read_only=True,
+        source='employees',
+    )
+
+
+    # def get_team_members(self, obj):
+    #     # Используем предварительно загруженные данные сотрудников через related менеджер
+    #     employees = [employee for employee in self.context['employees'] if obj in employee.team.all()]
+    #     return EmployeeModelSerializer(employees, many=True).data
