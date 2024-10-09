@@ -115,9 +115,9 @@ class TeamListModelViewSet(mixins.ListModelMixin,
         # position_requirement_subquery = PositionRequirement.objects.filter(
         #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
         #         ).values('skill', 'score')
-        position_requirement_subquery = PositionRequirement.objects.filter(
-            Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
-        )
+        # position_requirement_subquery = PositionRequirement.objects.filter(
+        #     Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
+        # )
         # ! =-=-=-=-=
         team_members = (
             Employee.objects

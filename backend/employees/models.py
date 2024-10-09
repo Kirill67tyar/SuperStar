@@ -229,47 +229,6 @@ class TrainigRequest(models.Model):
         return str(self.pk)
 
 
-class PositionRequirement(models.Model):
-    """Модель требований для позиции (должности)."""
-
-    position = models.ForeignKey(
-        Position,
-        on_delete=models.CASCADE,
-        related_name='requirements_position',
-        verbose_name='Должность',
-    )
-    grade = models.ForeignKey(
-        Grade,
-        on_delete=models.CASCADE,
-        related_name='requirements_grade',
-        verbose_name='Грейд',
-    )
-    skill = models.ForeignKey(
-        Skill,
-        on_delete=models.CASCADE,
-        related_name='requirements',
-        verbose_name='Скилл',
-    )
-    score = models.PositiveSmallIntegerField(
-        validators=[
-            MinValueValidator(
-                1,
-                message='Оценка не может быть меньше 1'
-            ),
-            MaxValueValidator(
-                5,
-                message='Оценка не может быть больше 5'
-            )
-        ],
-        verbose_name='Эталонная оценка',
-    )
-
-    class Meta:
-        verbose_name = 'Требования к позиции'
-        verbose_name_plural = 'Требования к позиции'
-
-    def __str__(self):
-        return str(self.pk)
 
 
 class Target(models.Model):
@@ -354,3 +313,45 @@ class Level(models.Model):
     def __str__(self):
         return str(self.pk)
 
+
+class PositionRequirement(models.Model):
+    """Модель требований для позиции (должности)."""
+
+    position = models.ForeignKey(
+        Position,
+        on_delete=models.CASCADE,
+        related_name='requirements_position',
+        verbose_name='Должность',
+    )
+    grade = models.ForeignKey(
+        Grade,
+        on_delete=models.CASCADE,
+        related_name='requirements_grade',
+        verbose_name='Грейд',
+    )
+    skill = models.ForeignKey(
+        Skill,
+        on_delete=models.CASCADE,
+        related_name='requirements',
+        verbose_name='Скилл',
+    )
+    score = models.PositiveSmallIntegerField(
+        validators=[
+            MinValueValidator(
+                1,
+                message='Оценка не может быть меньше 1'
+            ),
+            MaxValueValidator(
+                5,
+                message='Оценка не может быть больше 5'
+            )
+        ],
+        verbose_name='Эталонная оценка',
+    )
+
+    class Meta:
+        verbose_name = 'Требования к позиции'
+        verbose_name_plural = 'Требования к позиции'
+
+    def __str__(self):
+        return str(self.pk)
