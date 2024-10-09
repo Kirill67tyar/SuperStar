@@ -67,8 +67,9 @@ class TeamModelSerializer(serializers.ModelSerializer):
             'name',
         )
 
+
 class EmployeeModelSerializer(serializers.ModelSerializer):
-    
+
     position = serializers.StringRelatedField(read_only=True)
     grade = serializers.StringRelatedField(read_only=True)
     # team = serializers.StringRelatedField(many=True, read_only=True)
@@ -159,7 +160,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
             soft_skills: [
                 ...
             ]
-        
+
         """
         skills_mapping = {
             'Hard skills': 'hard_skills',
@@ -169,17 +170,28 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
             'hard_skills': [],
             'soft_skills': [],
         }
-        # return obj.levels.values('skill__name')
-        # if level.latest_score is not None or level.penultimate_score is not None:
+        score_ids = set()
         for level in obj.filtered_levels:
             scores = {}
-            scores['id'] = level.skill.name
-            scores['name'] = level.skill.name
-            if level.latest_score:  # is not None
-                scores['latest_score'] = level.latest_score
-            if level.penultimate_score:  # is not None
-                scores['penultimate_score'] = level.penultimate_score
-            skills_data[skills_mapping[level.skill.competence.type]].append(scores)
+            if level.skill.pk not in score_ids:
+                score_ids.add(level.skill.pk)
+                scores['id'] = level.skill.pk
+                scores['name'] = level.skill.name
+                if level.latest_score:  # is not None
+                    scores['score'] = level.latest_score
+                if level.penultimate_score:  # is not None
+                    scores['penultimate_score'] = level.penultimate_score
+                scores['growth'] = level.latest_score > level.penultimate_score
+                reqirement_score = (
+                    self.requirement_data[obj.position.name][obj.grade.name]
+                    .get(level.skill.name)
+                )
+                accordance = None
+                if reqirement_score:
+                    accordance = level.latest_score >= reqirement_score
+                scores['accordance'] = accordance
+                skills_data[skills_mapping[level.skill.competence.type]].append(
+                    scores)
         return skills_data
 
         # # ? =-=-=-=-=-=-=-=-=-=-=-= новый вариант:

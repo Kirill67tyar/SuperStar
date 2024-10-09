@@ -13,6 +13,7 @@ from employees.models import (
     Team,
     PositionRequirement,
 )
+from api.v1.pagination import CustomTeamPagination
 from api.v1.filters import EmployeeFilter, TeamFilter
 from api.v1.serializers import (
     EmployeeModelSerializer,
@@ -221,6 +222,7 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
                 .select_related('position', 'grade'))
     filter_backends = (DjangoFilterBackend,)
     filterset_class = EmployeeFilter
+    pagination_class = CustomTeamPagination
 
 
     def get_queryset(self):
@@ -275,36 +277,35 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
                 Prefetch('levels', queryset=skills_with_scores, to_attr='filtered_levels')
             )
         )
-
         return queryset
 
-    def list(self, request, *args, **kwargs):
-        # Получаем всех сотрудников с учётом фильтров и предвыборкой команд
-        employees = self.filter_queryset(
-            self.get_queryset()  # Оптимизация для избежания n+1 проблемы
-        )
-        # employees = self.get_queryset()  # Оптимизация для избежания n+1 проблемы
+    # def list(self, request, *args, **kwargs):
+    #     # Получаем всех сотрудников с учётом фильтров и предвыборкой команд
+    #     employees = self.filter_queryset(
+    #         self.get_queryset()  # Оптимизация для избежания n+1 проблемы
+    #     )
+    #     # employees = self.get_queryset()  # Оптимизация для избежания n+1 проблемы
 
-        # Получаем все уникальные команды, к которым относятся сотрудники
-        # teams = Team.objects.prefetch_related('employees').filter(employees__in=employees).distinct()
-        teams = (
-            Team.objects
-            .prefetch_related(
-                Prefetch(
-                    'employees',
-                    queryset=employees,
-                )
-            )
-            .filter(employees__in=employees)
-            .distinct()
-        )
+    #     # Получаем все уникальные команды, к которым относятся сотрудники
+    #     # teams = Team.objects.prefetch_related('employees').filter(employees__in=employees).distinct()
+    #     teams = (
+    #         Team.objects
+    #         .prefetch_related(
+    #             Prefetch(
+    #                 'employees',
+    #                 queryset=employees,
+    #             )
+    #         )
+    #         .filter(employees__in=employees)
+    #         .distinct()
+    #     )
 
-        # Сериализуем данные по командам, передавая сотрудников через context
-        serializer = TeamGroupedSerializer(
-            teams, 
-            many=True, 
-            context={'employees': employees})
-        return Response(
-            serializer.data,
-            status=status.HTTP_200_OK
-            )
+    #     # Сериализуем данные по командам, передавая сотрудников через context
+    #     serializer = TeamGroupedSerializer(
+    #         teams, 
+    #         many=True, 
+    #         context={'employees': employees})
+    #     return Response(
+    #         serializer.data,
+    #         status=status.HTTP_200_OK
+    #         )

@@ -27,9 +27,14 @@ class EmployeeFilter(FilterSet):
         queryset=Grade.objects.all(),
         to_field_name='name',
     )
-    skill = ModelMultipleChoiceFilter(  # ! не работает
+    skill = ModelMultipleChoiceFilter(  # ! не понятно, работает или нет
         field_name='levels__skill__name',
         queryset=Skill.objects.all(),
+        to_field_name='name',
+    )
+    competence = ModelMultipleChoiceFilter(  # ! не понятно, работает или нет
+        field_name='levels__skill__competence__name',
+        queryset=Competence.objects.all(),
         to_field_name='name',
     )
 
@@ -39,10 +44,15 @@ class EmployeeFilter(FilterSet):
             'employee',
             'team',
             'position',
+            'grade',
+            'skill',
+            'competence',
         ]
     def filter_queryset(self, queryset):
         queryset = super().filter_queryset(queryset)
         querystring = {}
+        if 'competence' in self.data:
+            querystring['levels__skill__competence__name__in'] = self.data.getlist('competence')
         if 'skill' in self.data:
             querystring['levels__skill__name__in'] = self.data.getlist('skill')
         if 'team' in self.data:
