@@ -145,18 +145,21 @@ class Requirement(models.Model):
     position = models.ForeignKey(
         Position,
         on_delete=models.CASCADE,
+        # on_delete=models.SET_NULL,
         related_name='requirements_position',
         verbose_name='Должность',
     )
     grade = models.ForeignKey(
         Grade,
         on_delete=models.CASCADE,
+        # on_delete=models.SET_NULL,
         related_name='requirements_grade',
         verbose_name='Грейд',
     )
     skill = models.ForeignKey(
         Skill,
         on_delete=models.CASCADE,
+        # on_delete=models.SET_NULL,
         related_name='requirements',
         verbose_name='Скилл',
     )
@@ -177,6 +180,7 @@ class Requirement(models.Model):
     class Meta:
         verbose_name = 'Требования к позиции'
         verbose_name_plural = 'Требования к позиции'
+        # db_table = 'lalala'
 
     def __str__(self):
         return str(self.pk)

@@ -8,7 +8,9 @@ from rest_framework import mixins
 from django_filters.rest_framework import DjangoFilterBackend
 
 
-from trainings.models import Requirement, Level
+from trainings.models import (
+    Level,
+)
 from employees.models import (
     Employee,
     Team,
@@ -95,7 +97,6 @@ class TeamListModelViewSet(mixins.ListModelMixin,
             skill=OuterRef('skill'),
             employee=OuterRef('employee')
         ).order_by('-date').values('score')[1:2]
-        
 
         # Запрос для получения всех уровней с аннотациями
         skills_with_scores = (
@@ -159,7 +160,6 @@ class TeamListModelViewSet(mixins.ListModelMixin,
     #         skill=OuterRef('skill'),
     #         employee=OuterRef('employee')
     #     ).order_by('-date').values('score')[1:2]
-        
 
     #     # Запрос для получения всех уровней с аннотациями
     #     skills_with_scores = (
@@ -224,7 +224,6 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
     filterset_class = EmployeeFilter
     pagination_class = CustomTeamPagination
 
-
     def get_queryset(self):
         queryset = super().get_queryset()
         # Подзапрос для получения последних и предпоследних уровней
@@ -242,12 +241,13 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
         skills_with_scores = (
             Level.objects
             .filter(
-                Q(date=Subquery(latest_levels)) | Q(date=Subquery(penultimate_levels))
+                Q(date=Subquery(latest_levels)) | Q(
+                    date=Subquery(penultimate_levels))
             )
             .select_related(
                 'skill',
                 'skill__competence',
-                )
+            )
             .annotate(
                 latest_score=Subquery(
                     Level.objects.filter(
@@ -274,7 +274,8 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
             # .select_related('position', 'grade')
             .prefetch_related(
                 'team',
-                Prefetch('levels', queryset=skills_with_scores, to_attr='filtered_levels')
+                Prefetch('levels', queryset=skills_with_scores,
+                         to_attr='filtered_levels')
             )
         )
         return queryset
@@ -302,8 +303,8 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
 
     #     # Сериализуем данные по командам, передавая сотрудников через context
     #     serializer = TeamGroupedSerializer(
-    #         teams, 
-    #         many=True, 
+    #         teams,
+    #         many=True,
     #         context={'employees': employees})
     #     return Response(
     #         serializer.data,

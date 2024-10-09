@@ -3,7 +3,11 @@ from django.db.models import OuterRef, Subquery
 from django.db.models.functions import Coalesce
 
 
-from trainings.models import TrainigRequest, Requirement, Level
+from trainings.models import (
+    TrainigRequest,
+    Requirement,
+    Level,
+)
 from skills.models import Competence, Skill
 from employees.models import (
     Grade,

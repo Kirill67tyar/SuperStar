@@ -3,7 +3,9 @@ from django_filters.rest_framework import (BooleanFilter, CharFilter,
                                            FilterSet,
                                            ModelMultipleChoiceFilter)
 
-from employees.models import Team, Employee, Level, Position, Grade, Skill, Competence
+from skills.models import Skill, Competence
+from trainings.models import Level
+from employees.models import Team, Employee, Position, Grade 
 
 
 class EmployeeFilter(FilterSet):

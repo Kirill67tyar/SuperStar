@@ -155,3 +155,9 @@ backend/api/tests.py
 backend/employees/tests.py
 backend/employees/views.py
 
+backend/skills/tests.py
+backend/skills/views.py
+
+backend/trainings/tests.py
+backend/trainings/views.py
+
