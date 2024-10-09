@@ -3,17 +3,14 @@ from django.db.models import OuterRef, Subquery
 from django.db.models.functions import Coalesce
 
 
+from trainings.models import TrainigRequest, Requirement, Level
+from skills.models import Competence, Skill
 from employees.models import (
     Grade,
     Position,
     Team,
     Employee,
-    Competence,
-    Skill,
-    TrainigRequest,
-    PositionRequirement,
     Target,
-    Level,
 )
 
 """
@@ -95,7 +92,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        requirements_for_position = PositionRequirement.objects.select_related(
+        requirements_for_position = Requirement.objects.select_related(
             'position',
             'grade',
             'skill',

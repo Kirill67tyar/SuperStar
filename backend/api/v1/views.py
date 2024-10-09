@@ -7,11 +7,11 @@ from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, GenericV
 from rest_framework import mixins
 from django_filters.rest_framework import DjangoFilterBackend
 
+
+from trainings.models import Requirement, Level
 from employees.models import (
     Employee,
-    Level,
     Team,
-    PositionRequirement,
 )
 from api.v1.pagination import CustomTeamPagination
 from api.v1.filters import EmployeeFilter, TeamFilter
@@ -112,10 +112,10 @@ class TeamListModelViewSet(mixins.ListModelMixin,
             )
         )
         # ! =-=-=-=-=
-        # position_requirement_subquery = PositionRequirement.objects.filter(
+        # position_requirement_subquery = Requirement.objects.filter(
         #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
         #         ).values('skill', 'score')
-        # position_requirement_subquery = PositionRequirement.objects.filter(
+        # position_requirement_subquery = Requirement.objects.filter(
         #     Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
         # )
         # ! =-=-=-=-=
@@ -176,10 +176,10 @@ class TeamListModelViewSet(mixins.ListModelMixin,
     #         )
     #     )
     #     # ! =-=-=-=-=
-    #     # position_requirement_subquery = PositionRequirement.objects.filter(
+    #     # position_requirement_subquery = Requirement.objects.filter(
     #     #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
     #     #         ).values('skill', 'score')
-    #     position_requirement_subquery = PositionRequirement.objects.filter(
+    #     position_requirement_subquery = Requirement.objects.filter(
     #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
     #     )
     #     # ! =-=-=-=-=

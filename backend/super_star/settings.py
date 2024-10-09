@@ -22,7 +22,9 @@ INSTALLED_APPS = [
     'django_filters',
     'debug_toolbar',
     'api.apps.ApiConfig',
+    'skills.apps.SkillsConfig',
     'employees.apps.EmployeesConfig',
+    'trainings.apps.TrainingsConfig',
 ]
 
 MIDDLEWARE = [
