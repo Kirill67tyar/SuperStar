@@ -82,6 +82,7 @@ class TrainigRequest(models.Model):
     employee = models.ForeignKey(
         Employee,
         on_delete=models.CASCADE,
+        related_name='training_requests',
         verbose_name='Сотрудник',
     )
     skill = models.ForeignKey(
@@ -138,6 +139,36 @@ class TrainigRequest(models.Model):
 
     def __str__(self):
         return str(self.pk)
+
+
+class DevelopmentPlanRequest(models.Model):
+
+    #! employee = models.ForeignKey(
+    employee = models.OneToOneField(
+        Employee,
+        on_delete=models.CASCADE,
+        verbose_name='Сотрудник',
+    )
+    position = models.ForeignKey(
+        Position,
+        on_delete=models.CASCADE,
+        verbose_name='Должность',
+    )
+    grade = models.ForeignKey(
+        Grade,
+        on_delete=models.CASCADE,
+        verbose_name='Грейд',
+    )
+    class Meta:
+        verbose_name = 'Заявка на план развития'
+        verbose_name_plural = 'Заявки на планы развитий'
+        default_related_name = 'development_requests'
+        ordering = ('pk',)
+    
+    def __str__(self):
+        return str(self.pk)
+
+
 
 class PositionRequirement(models.Model):
     """Модель требований для позиции (должности)."""

@@ -1,6 +1,6 @@
 from rest_framework import status
 from rest_framework.response import Response
-from django.db.models import OuterRef, Subquery, Prefetch, Q
+from django.db.models import OuterRef, Subquery, Prefetch, Q, Count
 from django.db.models.functions import Coalesce
 from django.db.models import Max, F
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, GenericViewSet
@@ -221,7 +221,11 @@ class TrialEmployeeListModelViewSet(ModelViewSet):
     ]
     serializer_class = EmployeeModelSerializer
     queryset = (Employee.objects
-                .select_related('position', 'grade'))
+                .select_related(
+                    'position',
+                    'grade'
+                )
+                )
     filter_backends = (DjangoFilterBackend,)
     filterset_class = EmployeeFilter
     pagination_class = CustomTeamPagination
@@ -308,8 +312,12 @@ class TrialEmployeeListModelViewSet(ModelViewSet):
             # .select_related('position', 'grade')
             .prefetch_related(
                 'team',
+                'development_requests',
                 Prefetch('levels', queryset=skills_with_scores,
                          to_attr='filtered_levels')
+            )
+            .annotate(
+                quantity_requests=Count('training_requests__id')
             )
         )
         return queryset

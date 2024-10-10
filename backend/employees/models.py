@@ -20,7 +20,7 @@ class Grade(models.Model):
         verbose_name = 'Домен'
         verbose_name_plural = 'Домены'
         ordering = ('pk',)
-    
+
     def __str__(self):
         return self.name
 
@@ -38,8 +38,10 @@ class Position(models.Model):
         verbose_name = 'Должность'
         verbose_name_plural = 'Должности'
         ordering = ('pk',)
+
     def __str__(self):
         return self.name
+
 
 class Team(models.Model):
     """Модель команды."""
@@ -55,7 +57,7 @@ class Team(models.Model):
         verbose_name_plural = 'Команды'
 
     def __str__(self):
-            return self.name
+        return self.name
 
 
 class Employee(models.Model):
@@ -88,6 +90,12 @@ class Employee(models.Model):
     created = models.DateField(
         verbose_name='Добавлено',
     )
+    image = models.ImageField(
+        upload_to='employees/images/',
+        null=True,
+        blank=True,
+        verbose_name='Изображение',
+    )
 
     class Meta:
         verbose_name = 'Сотрудник'
@@ -95,7 +103,7 @@ class Employee(models.Model):
         ordering = ('pk', )
 
     def __str__(self):
-            return self.name
+        return self.name
 
 
 class Target(models.Model):
@@ -123,7 +131,3 @@ class Target(models.Model):
 
     def __str__(self):
         return str(self.pk)
-
-
-
-

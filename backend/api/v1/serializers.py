@@ -76,6 +76,12 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     # team = serializers.StringRelatedField(many=True, read_only=True)
     team = TeamModelSerializer(many=True, read_only=True)
     skills = serializers.SerializerMethodField(read_only=True)
+    requests_by_employee = serializers.IntegerField(
+        source='quantity_requests',
+        read_only=True,
+    )
+    development_plan = serializers.SerializerMethodField(read_only=True)
+    
     # skills = LevelModelSerializer(
     #     many=True,
     #     read_only=True,
@@ -86,46 +92,21 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
         model = Employee
         fields = (
             'id',
+            'image',
             'name',
             'position',
             'bus_factor',
             'grade',
             'team',
             'created',
+            'requests_by_employee',
+            'development_plan',
             'skills',
         )
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     requirements_for_position = Requirement.objects.select_related(
-    #         'position',
-    #         'grade',
-    #         'skill',
-    #     ).values(
-    #         'position__name',
-    #         'grade__name',
-    #         'skill__name',
-    #         'score'
-    #     )
-    #     requirement_data = {}
-
-    #     for p in requirements_for_position:
-
-    #         requirement_data[p['position__name']] = (
-    #             requirement_data
-    #             .get(p['position__name'], {})
-    #         )
-    #         requirement_data[p['position__name']][p['grade__name']] = (
-    #             requirement_data
-    #             [p['position__name']]
-    #             .get(p['grade__name'], {})
-    #         )
-    #         (requirement_data
-    #          [p['position__name']]
-    #          [p['grade__name']]
-    #          .update({p['skill__name']: p['score']}))
-    #     self.requirement_data = requirement_data
-
+    def get_development_plan(self, obj):
+        return hasattr(obj, 'development_requests')
+    
     def get_skills(self, obj):
         """
         skills: [

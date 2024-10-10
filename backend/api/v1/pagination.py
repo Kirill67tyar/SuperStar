@@ -10,7 +10,6 @@ from employees.models import Team, Employee
 from api.v1.serializers import EmployeeModelSerializer
 
 
-# teams = Team.objects.all().values_list('name', flat=True)
 
 
 class CustomTeamPagination(PageNumberPagination):
@@ -51,16 +50,7 @@ class CustomTeamPagination(PageNumberPagination):
         return list(self.current_team_employees)
 
     def get_paginated_response(self, data):
-        """
-            return Response(OrderedDict([
-                ('count', self.page.paginator.count),
-                ('next', self.get_next_link()),
-                ('previous', self.get_previous_link()),
-                ('team', self.team),
-                ('count', self.current_team_employees.count()),
-                ('results', data)
-            ]))
-        """
+        
         return Response(OrderedDict([
                 # ('count', self.page.paginator.count),
                 # ('next', self.get_next_link()),
