@@ -75,7 +75,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     grade = serializers.StringRelatedField(read_only=True)
     # team = serializers.StringRelatedField(many=True, read_only=True)
     team = TeamModelSerializer(many=True, read_only=True)
-    # skills = serializers.SerializerMethodField(read_only=True)
+    skills = serializers.SerializerMethodField(read_only=True)
     # skills = LevelModelSerializer(
     #     many=True,
     #     read_only=True,
@@ -85,13 +85,14 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = (
+            'id',
             'name',
             'position',
             'bus_factor',
             'grade',
             'team',
             'created',
-            # 'skills',
+            'skills',
         )
 
     # def __init__(self, *args, **kwargs):
