@@ -10,6 +10,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from trainings.models import (
     Level,
+    PositionRequirement,
 )
 from employees.models import (
     Employee,
@@ -113,10 +114,10 @@ class TeamListModelViewSet(mixins.ListModelMixin,
             )
         )
         # ! =-=-=-=-=
-        # position_requirement_subquery = Requirement.objects.filter(
+        # position_requirement_subquery = PositionRequirement.objects.filter(
         #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
         #         ).values('skill', 'score')
-        # position_requirement_subquery = Requirement.objects.filter(
+        # position_requirement_subquery = PositionRequirement.objects.filter(
         #     Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
         # )
         # ! =-=-=-=-=
@@ -176,10 +177,10 @@ class TeamListModelViewSet(mixins.ListModelMixin,
     #         )
     #     )
     #     # ! =-=-=-=-=
-    #     # position_requirement_subquery = Requirement.objects.filter(
+    #     # position_requirement_subquery = PositionRequirement.objects.filter(
     #     #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
     #     #         ).values('skill', 'score')
-    #     position_requirement_subquery = Requirement.objects.filter(
+    #     position_requirement_subquery = PositionRequirement.objects.filter(
     #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
     #     )
     #     # ! =-=-=-=-=
@@ -211,8 +212,9 @@ class TeamListModelViewSet(mixins.ListModelMixin,
     #     )
 
 
-class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
-                                    GenericViewSet,):
+# class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
+#                                     GenericViewSet,):
+class TrialEmployeeListModelViewSet(ModelViewSet):
     http_method_names = [
         'get',
         'options',
@@ -223,6 +225,38 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
     filter_backends = (DjangoFilterBackend,)
     filterset_class = EmployeeFilter
     pagination_class = CustomTeamPagination
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        requirements_for_position = PositionRequirement.objects.select_related(
+            'position',
+            'grade',
+            'skill',
+        ).values(
+            'position__name',
+            'grade__name',
+            'skill__name',
+            'score'
+        )
+        requirement_data = {}
+
+        for p in requirements_for_position:
+
+            requirement_data[p['position__name']] = (
+                requirement_data
+                .get(p['position__name'], {})
+            )
+            requirement_data[p['position__name']][p['grade__name']] = (
+                requirement_data
+                [p['position__name']]
+                .get(p['grade__name'], {})
+            )
+            (requirement_data
+             [p['position__name']]
+             [p['grade__name']]
+             .update({p['skill__name']: p['score']}))
+        context['requirement_data'] = requirement_data
+        return context
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -279,6 +313,20 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
             )
         )
         return queryset
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True, context=self.get_serializer_context())
+            return self.get_paginated_response(serializer.data)
+        serializer = self.get_serializer(
+            queryset,
+            many=True,
+            context=self.get_serializer_context()
+        )
+        return Response(serializer.data)
 
     # def list(self, request, *args, **kwargs):
     #     # Получаем всех сотрудников с учётом фильтров и предвыборкой команд

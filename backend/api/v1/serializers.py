@@ -5,7 +5,7 @@ from django.db.models.functions import Coalesce
 
 from trainings.models import (
     TrainigRequest,
-    Requirement,
+    PositionRequirement,
     Level,
 )
 from skills.models import Competence, Skill
@@ -75,7 +75,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     grade = serializers.StringRelatedField(read_only=True)
     # team = serializers.StringRelatedField(many=True, read_only=True)
     team = TeamModelSerializer(many=True, read_only=True)
-    skills = serializers.SerializerMethodField(read_only=True)
+    # skills = serializers.SerializerMethodField(read_only=True)
     # skills = LevelModelSerializer(
     #     many=True,
     #     read_only=True,
@@ -91,39 +91,39 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
             'grade',
             'team',
             'created',
-            'skills',
+            # 'skills',
         )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        requirements_for_position = Requirement.objects.select_related(
-            'position',
-            'grade',
-            'skill',
-        ).values(
-            'position__name',
-            'grade__name',
-            'skill__name',
-            'score'
-        )
-        requirement_data = {}
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     requirements_for_position = Requirement.objects.select_related(
+    #         'position',
+    #         'grade',
+    #         'skill',
+    #     ).values(
+    #         'position__name',
+    #         'grade__name',
+    #         'skill__name',
+    #         'score'
+    #     )
+    #     requirement_data = {}
 
-        for p in requirements_for_position:
+    #     for p in requirements_for_position:
 
-            requirement_data[p['position__name']] = (
-                requirement_data
-                .get(p['position__name'], {})
-            )
-            requirement_data[p['position__name']][p['grade__name']] = (
-                requirement_data
-                [p['position__name']]
-                .get(p['grade__name'], {})
-            )
-            (requirement_data
-             [p['position__name']]
-             [p['grade__name']]
-             .update({p['skill__name']: p['score']}))
-        self.requirement_data = requirement_data
+    #         requirement_data[p['position__name']] = (
+    #             requirement_data
+    #             .get(p['position__name'], {})
+    #         )
+    #         requirement_data[p['position__name']][p['grade__name']] = (
+    #             requirement_data
+    #             [p['position__name']]
+    #             .get(p['grade__name'], {})
+    #         )
+    #         (requirement_data
+    #          [p['position__name']]
+    #          [p['grade__name']]
+    #          .update({p['skill__name']: p['score']}))
+    #     self.requirement_data = requirement_data
 
     def get_skills(self, obj):
         """
@@ -172,6 +172,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
             'soft_skills': [],
         }
         score_ids = set()
+        requirement_data = self.context['requirement_data']
         for level in obj.filtered_levels:
             scores = {}
             if level.skill.pk not in score_ids:
@@ -184,7 +185,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
                     scores['penultimate_score'] = level.penultimate_score
                 scores['growth'] = level.latest_score > level.penultimate_score
                 reqirement_score = (
-                    self.requirement_data[obj.position.name][obj.grade.name]
+                    requirement_data[obj.position.name][obj.grade.name]
                     .get(level.skill.name)
                 )
                 accordance = None

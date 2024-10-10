@@ -139,7 +139,7 @@ class TrainigRequest(models.Model):
     def __str__(self):
         return str(self.pk)
 
-class Requirement(models.Model):
+class PositionRequirement(models.Model):
     """Модель требований для позиции (должности)."""
 
     position = models.ForeignKey(
