@@ -3,17 +3,18 @@ from django.db.models import OuterRef, Subquery
 from django.db.models.functions import Coalesce
 
 
+from trainings.models import (
+    TrainigRequest,
+    PositionRequirement,
+    Level,
+)
+from skills.models import Competence, Skill
 from employees.models import (
     Grade,
     Position,
     Team,
     Employee,
-    Competence,
-    Skill,
-    TrainigRequest,
-    PositionRequirement,
     Target,
-    Level,
 )
 
 """
@@ -75,6 +76,12 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     # team = serializers.StringRelatedField(many=True, read_only=True)
     team = TeamModelSerializer(many=True, read_only=True)
     skills = serializers.SerializerMethodField(read_only=True)
+    requests_by_employee = serializers.IntegerField(
+        source='quantity_requests',
+        read_only=True,
+    )
+    development_plan = serializers.SerializerMethodField(read_only=True)
+
     # skills = LevelModelSerializer(
     #     many=True,
     #     read_only=True,
@@ -84,45 +91,21 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = (
+            'id',
+            'image',
             'name',
             'position',
             'bus_factor',
             'grade',
             'team',
             'created',
+            'requests_by_employee',
+            'development_plan',
             'skills',
         )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        requirements_for_position = PositionRequirement.objects.select_related(
-            'position',
-            'grade',
-            'skill',
-        ).values(
-            'position__name',
-            'grade__name',
-            'skill__name',
-            'score'
-        )
-        requirement_data = {}
-
-        for p in requirements_for_position:
-
-            requirement_data[p['position__name']] = (
-                requirement_data
-                .get(p['position__name'], {})
-            )
-            requirement_data[p['position__name']][p['grade__name']] = (
-                requirement_data
-                [p['position__name']]
-                .get(p['grade__name'], {})
-            )
-            (requirement_data
-             [p['position__name']]
-             [p['grade__name']]
-             .update({p['skill__name']: p['score']}))
-        self.requirement_data = requirement_data
+    def get_development_plan(self, obj):
+        return hasattr(obj, 'development_requests')
 
     def get_skills(self, obj):
         """
@@ -171,6 +154,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
             'soft_skills': [],
         }
         score_ids = set()
+        requirement_data = self.context['requirement_data']
         for level in obj.filtered_levels:
             scores = {}
             if level.skill.pk not in score_ids:
@@ -183,7 +167,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
                     scores['penultimate_score'] = level.penultimate_score
                 scores['growth'] = level.latest_score > level.penultimate_score
                 reqirement_score = (
-                    self.requirement_data[obj.position.name][obj.grade.name]
+                    requirement_data[obj.position.name][obj.grade.name]
                     .get(level.skill.name)
                 )
                 accordance = None
@@ -261,3 +245,50 @@ class TeamGroupedSerializer(serializers.Serializer):
     #     # Используем предварительно загруженные данные сотрудников через related менеджер
     #     employees = [employee for employee in self.context['employees'] if obj in employee.team.all()]
     #     return EmployeeModelSerializer(employees, many=True).data
+
+
+class TrainigRequestReadSerializer(serializers.ModelSerializer):
+    employee = serializers.SerializerMethodField()
+    # grade = serializers.SerializerMethodField()
+    skill = serializers.SerializerMethodField()
+    # request_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = TrainigRequest
+        fields = (
+            'id',
+            'employee',
+            'skill',
+            # 'request_count',
+        )
+
+    def get_employee(self, obj):
+        return {
+            'name': obj.employee.name,
+            'position': obj.employee.position.name,
+            'grade': obj.employee.grade.name,
+            'bus_factor': obj.employee.bus_factor,
+            'test_data': {
+                'employee': obj.employee.pk,
+                'position': obj.employee.position.pk,
+                'grade': obj.employee.grade.pk,
+            }
+        }
+
+    def get_skill(self, obj):
+        """Количество запросов."""
+        return {
+            'competence': obj.skill.competence.name,
+            'name': obj.skill.name,
+            'skill_course': f"Курс {obj.skill.name}",
+            'time_of_training': f"{obj.start_date} - {obj.start_date}",
+            'test_data': {
+                'competence': obj.skill.competence.pk,
+                'skill': obj.skill.pk,
+            }
+        }
+
+    # def get_request_count(self, obj):
+    #     """Количество запросов."""
+    #     return obj.request_count
+        # return TrainigRequest.objects.all().count()

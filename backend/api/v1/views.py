@@ -1,24 +1,29 @@
 from rest_framework import status
 from rest_framework.response import Response
-from django.db.models import OuterRef, Subquery, Prefetch, Q
+from django.db.models import OuterRef, Subquery, Prefetch, Q, Count
 from django.db.models.functions import Coalesce
 from django.db.models import Max, F
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, GenericViewSet
 from rest_framework import mixins
 from django_filters.rest_framework import DjangoFilterBackend
 
-from employees.models import (
-    Employee,
+
+from trainings.models import (
+    TrainigRequest,
     Level,
-    Team,
     PositionRequirement,
 )
+from employees.models import (
+    Employee,
+    Team,
+)
 from api.v1.pagination import CustomTeamPagination
-from api.v1.filters import EmployeeFilter, TeamFilter
+from api.v1.filters import EmployeeFilter, TeamFilter, TrainigRequestFilter
 from api.v1.serializers import (
     EmployeeModelSerializer,
     TeamModelSerializer,
     TeamGroupedSerializer,
+    TrainigRequestReadSerializer,
 )
 
 
@@ -95,7 +100,6 @@ class TeamListModelViewSet(mixins.ListModelMixin,
             skill=OuterRef('skill'),
             employee=OuterRef('employee')
         ).order_by('-date').values('score')[1:2]
-        
 
         # Запрос для получения всех уровней с аннотациями
         skills_with_scores = (
@@ -159,7 +163,6 @@ class TeamListModelViewSet(mixins.ListModelMixin,
     #         skill=OuterRef('skill'),
     #         employee=OuterRef('employee')
     #     ).order_by('-date').values('score')[1:2]
-        
 
     #     # Запрос для получения всех уровней с аннотациями
     #     skills_with_scores = (
@@ -211,19 +214,55 @@ class TeamListModelViewSet(mixins.ListModelMixin,
     #     )
 
 
-class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
-                                    GenericViewSet,):
+# class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
+#                                     GenericViewSet,):
+class TrialEmployeeListModelViewSet(ModelViewSet):
     http_method_names = [
         'get',
         'options',
     ]
     serializer_class = EmployeeModelSerializer
     queryset = (Employee.objects
-                .select_related('position', 'grade'))
+                .select_related(
+                    'position',
+                    'grade'
+                )
+                )
     filter_backends = (DjangoFilterBackend,)
     filterset_class = EmployeeFilter
     pagination_class = CustomTeamPagination
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        requirements_for_position = PositionRequirement.objects.select_related(
+            'position',
+            'grade',
+            'skill',
+        ).values(
+            'position__name',
+            'grade__name',
+            'skill__name',
+            'score'
+        )
+        requirement_data = {}
+
+        for p in requirements_for_position:
+
+            requirement_data[p['position__name']] = (
+                requirement_data
+                .get(p['position__name'], {})
+            )
+            requirement_data[p['position__name']][p['grade__name']] = (
+                requirement_data
+                [p['position__name']]
+                .get(p['grade__name'], {})
+            )
+            (requirement_data
+             [p['position__name']]
+             [p['grade__name']]
+             .update({p['skill__name']: p['score']}))
+        context['requirement_data'] = requirement_data
+        return context
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -242,12 +281,13 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
         skills_with_scores = (
             Level.objects
             .filter(
-                Q(date=Subquery(latest_levels)) | Q(date=Subquery(penultimate_levels))
+                Q(date=Subquery(latest_levels)) | Q(
+                    date=Subquery(penultimate_levels))
             )
             .select_related(
                 'skill',
                 'skill__competence',
-                )
+            )
             .annotate(
                 latest_score=Subquery(
                     Level.objects.filter(
@@ -274,10 +314,34 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
             # .select_related('position', 'grade')
             .prefetch_related(
                 'team',
-                Prefetch('levels', queryset=skills_with_scores, to_attr='filtered_levels')
+                'development_requests',
+                Prefetch('levels', queryset=skills_with_scores,
+                         to_attr='filtered_levels')
+            )
+            .annotate(
+                quantity_requests=Count('training_requests__id')
             )
         )
         return queryset
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        team = request.query_params.get('team', None)
+        if team:
+            page = self.paginate_queryset(queryset)
+            if page is not None:
+                serializer = self.get_serializer(
+                    page,
+                    many=True,
+                    context=self.get_serializer_context()
+                )
+                return self.get_paginated_response(serializer.data)
+        serializer = self.get_serializer(
+            queryset,
+            many=True,
+            context=self.get_serializer_context()
+        )
+        return Response(serializer.data)
 
     # def list(self, request, *args, **kwargs):
     #     # Получаем всех сотрудников с учётом фильтров и предвыборкой команд
@@ -302,10 +366,30 @@ class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
 
     #     # Сериализуем данные по командам, передавая сотрудников через context
     #     serializer = TeamGroupedSerializer(
-    #         teams, 
-    #         many=True, 
+    #         teams,
+    #         many=True,
     #         context={'employees': employees})
     #     return Response(
     #         serializer.data,
     #         status=status.HTTP_200_OK
     #         )
+
+
+
+class TrainigRequestView(ModelViewSet):
+# class TrainigRequestView(ReadOnlyModelViewSet):
+    queryset = (TrainigRequest.objects
+                .select_related(
+        'employee', 
+        'employee__position', 
+        'employee__grade', 
+        'skill', 
+        'skill__competence'
+        )
+        # .annotate(request_count=Count('id'))
+        .all())
+    serializer_class = TrainigRequestReadSerializer
+    http_method_names = ['get', ]
+    pagination_class = None
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = TrainigRequestFilter

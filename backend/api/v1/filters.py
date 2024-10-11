@@ -3,46 +3,48 @@ from django_filters.rest_framework import (BooleanFilter, CharFilter,
                                            FilterSet,
                                            ModelMultipleChoiceFilter)
 
-from employees.models import Team, Employee, Level, Position, Grade, Skill, Competence
+from skills.models import Skill, Competence
+from trainings.models import Level, TrainigRequest
+from employees.models import Team, Employee, Position, Grade 
 
 
 class EmployeeFilter(FilterSet):
     employee = ModelMultipleChoiceFilter(
-        field_name='name',
+        field_name='pk',
         queryset=Employee.objects.all(),
-        to_field_name='name',
+        to_field_name='pk',
     )
-    team = ModelMultipleChoiceFilter(
-        field_name='team__name',
-        queryset=Team.objects.all(),
-        to_field_name='name',
-    )
+    # team = ModelMultipleChoiceFilter(
+    #     field_name='team__pk',
+    #     queryset=Team.objects.all(),
+    #     to_field_name='pk',
+    # )
     position = ModelMultipleChoiceFilter(
-        field_name='position__name',
+        field_name='position__pk',
         queryset=Position.objects.all(),
-        to_field_name='name',
+        to_field_name='pk',
     )
     grade = ModelMultipleChoiceFilter(
-        field_name='grade__name',
+        field_name='grade__pk',
         queryset=Grade.objects.all(),
-        to_field_name='name',
+        to_field_name='pk',
     )
     skill = ModelMultipleChoiceFilter(  # ! не понятно, работает или нет
-        field_name='levels__skill__name',
+        field_name='levels__skill__pk',
         queryset=Skill.objects.all(),
-        to_field_name='name',
+        to_field_name='pk',
     )
     competence = ModelMultipleChoiceFilter(  # ! не понятно, работает или нет
-        field_name='levels__skill__competence__name',
+        field_name='levels__skill__competence__pk',
         queryset=Competence.objects.all(),
-        to_field_name='name',
+        to_field_name='pk',
     )
 
     class Meta:
         model = Employee
         fields = [
             'employee',
-            'team',
+            # 'team',
             'position',
             'grade',
             'skill',
@@ -52,15 +54,15 @@ class EmployeeFilter(FilterSet):
         queryset = super().filter_queryset(queryset)
         querystring = {}
         if 'competence' in self.data:
-            querystring['levels__skill__competence__name__in'] = self.data.getlist('competence')
+            querystring['levels__skill__competence__pk__in'] = self.data.getlist('competence')
         if 'skill' in self.data:
-            querystring['levels__skill__name__in'] = self.data.getlist('skill')
-        if 'team' in self.data:
-            querystring['team__name__in'] = self.data.getlist('team')
+            querystring['levels__skill__pk__in'] = self.data.getlist('skill')
+        # if 'team' in self.data:
+        #     querystring['team__pk__in'] = self.data.getlist('team')
         if 'grade' in self.data:
-            querystring['grade__name__in'] = self.data.getlist('grade')
+            querystring['grade__pk__in'] = self.data.getlist('grade')
         if 'position' in self.data:
-            querystring['position__name__in'] = self.data.getlist('position')
+            querystring['position__pk__in'] = self.data.getlist('position')
         return queryset.filter(**querystring).distinct()
 
 
@@ -95,3 +97,81 @@ class TeamFilter(FilterSet):
     #     if value:
     #         return queryset.filter(employees__name__in=value).distinct()
     #     return queryset
+
+
+"""
+class TrainigRequestView(ReadOnlyModelViewSet):
+    queryset = (TrainigRequest.objects
+                .select_related(
+        'employee', 
+        'employee__position', 
+        'employee__grade', 
+        'skill', 
+        'skill__competence'
+        )
+        # .annotate(request_count=Count('id'))
+        .all())
+    serializer_class = TrainigRequestReadSerializer
+    http_method_names = ['get', ]
+    pagination_class = None
+
+"""
+class TrainigRequestFilter(FilterSet):
+    employee = ModelMultipleChoiceFilter(
+        field_name='employee__pk',
+        queryset=Employee.objects.all(),
+        to_field_name='pk',
+    )
+    team = ModelMultipleChoiceFilter(
+        field_name='employee__team__pk',
+        queryset=Team.objects.all(),
+        to_field_name='pk',
+    )
+    position = ModelMultipleChoiceFilter(
+        field_name='employee__position__pk',
+        queryset=Position.objects.all(),
+        to_field_name='pk',
+    )
+    grade = ModelMultipleChoiceFilter(
+        field_name='employee__grade__pk',
+        queryset=Grade.objects.all(),
+        to_field_name='pk',
+    )
+    skill = ModelMultipleChoiceFilter(  # ! не понятно, работает или нет
+        field_name='skill__pk',
+        queryset=Skill.objects.all(),
+        to_field_name='pk',
+    )
+    competence = ModelMultipleChoiceFilter(  # ! не понятно, работает или нет
+        field_name='skill__competence__pk',
+        queryset=Competence.objects.all(),
+        to_field_name='pk',
+    )
+
+    class Meta:
+        model = TrainigRequest
+        fields = [
+            # 'period',
+            'employee',
+            'team',
+            'position',
+            'grade',
+            'skill',
+            'competence',
+        ]
+    def filter_queryset(self, queryset):
+        queryset = super().filter_queryset(queryset)
+        querystring = {}
+        if 'employee' in self.data:
+            querystring['employee__pk__in'] = self.data.getlist('employee')
+        if 'competence' in self.data:
+            querystring['skill__competence__pk__in'] = self.data.getlist('competence')
+        if 'skill' in self.data:
+            querystring['skill__pk__in'] = self.data.getlist('skill')
+        if 'team' in self.data:
+            querystring['employee__team__pk__in'] = self.data.getlist('team')
+        if 'grade' in self.data:
+            querystring['employee__grade__pk__in'] = self.data.getlist('grade')
+        if 'position' in self.data:
+            querystring['employee__position__pk__in'] = self.data.getlist('position')
+        return queryset.filter(**querystring).distinct()
