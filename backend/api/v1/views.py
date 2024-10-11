@@ -9,6 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 
 from trainings.models import (
+    TrainigRequest,
     Level,
     PositionRequirement,
 )
@@ -17,11 +18,12 @@ from employees.models import (
     Team,
 )
 from api.v1.pagination import CustomTeamPagination
-from api.v1.filters import EmployeeFilter, TeamFilter
+from api.v1.filters import EmployeeFilter, TeamFilter, TrainigRequestFilter
 from api.v1.serializers import (
     EmployeeModelSerializer,
     TeamModelSerializer,
     TeamGroupedSerializer,
+    TrainigRequestReadSerializer,
 )
 
 
@@ -371,3 +373,23 @@ class TrialEmployeeListModelViewSet(ModelViewSet):
     #         serializer.data,
     #         status=status.HTTP_200_OK
     #         )
+
+
+
+class TrainigRequestView(ModelViewSet):
+# class TrainigRequestView(ReadOnlyModelViewSet):
+    queryset = (TrainigRequest.objects
+                .select_related(
+        'employee', 
+        'employee__position', 
+        'employee__grade', 
+        'skill', 
+        'skill__competence'
+        )
+        # .annotate(request_count=Count('id'))
+        .all())
+    serializer_class = TrainigRequestReadSerializer
+    http_method_names = ['get', ]
+    pagination_class = None
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = TrainigRequestFilter

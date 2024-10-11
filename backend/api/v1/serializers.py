@@ -81,7 +81,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
         read_only=True,
     )
     development_plan = serializers.SerializerMethodField(read_only=True)
-    
+
     # skills = LevelModelSerializer(
     #     many=True,
     #     read_only=True,
@@ -106,7 +106,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
 
     def get_development_plan(self, obj):
         return hasattr(obj, 'development_requests')
-    
+
     def get_skills(self, obj):
         """
         skills: [
@@ -245,3 +245,50 @@ class TeamGroupedSerializer(serializers.Serializer):
     #     # Используем предварительно загруженные данные сотрудников через related менеджер
     #     employees = [employee for employee in self.context['employees'] if obj in employee.team.all()]
     #     return EmployeeModelSerializer(employees, many=True).data
+
+
+class TrainigRequestReadSerializer(serializers.ModelSerializer):
+    employee = serializers.SerializerMethodField()
+    # grade = serializers.SerializerMethodField()
+    skill = serializers.SerializerMethodField()
+    # request_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = TrainigRequest
+        fields = (
+            'id',
+            'employee',
+            'skill',
+            # 'request_count',
+        )
+
+    def get_employee(self, obj):
+        return {
+            'name': obj.employee.name,
+            'position': obj.employee.position.name,
+            'grade': obj.employee.grade.name,
+            'bus_factor': obj.employee.bus_factor,
+            'test_data': {
+                'employee': obj.employee.pk,
+                'position': obj.employee.position.pk,
+                'grade': obj.employee.grade.pk,
+            }
+        }
+
+    def get_skill(self, obj):
+        """Количество запросов."""
+        return {
+            'competence': obj.skill.competence.name,
+            'name': obj.skill.name,
+            'skill_course': f"Курс {obj.skill.name}",
+            'time_of_training': f"{obj.start_date} - {obj.start_date}",
+            'test_data': {
+                'competence': obj.skill.competence.pk,
+                'skill': obj.skill.pk,
+            }
+        }
+
+    # def get_request_count(self, obj):
+    #     """Количество запросов."""
+    #     return obj.request_count
+        # return TrainigRequest.objects.all().count()
