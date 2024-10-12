@@ -6,6 +6,7 @@ from django.db.models import Max, F
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, GenericViewSet
 from rest_framework import mixins
 from django_filters.rest_framework import DjangoFilterBackend
+from itertools import groupby
 
 
 from trainings.models import (
@@ -375,21 +376,37 @@ class TrialEmployeeListModelViewSet(ModelViewSet):
     #         )
 
 
-
 class TrainigRequestView(ModelViewSet):
-# class TrainigRequestView(ReadOnlyModelViewSet):
     queryset = (TrainigRequest.objects
                 .select_related(
-        'employee', 
-        'employee__position', 
-        'employee__grade', 
-        'skill', 
-        'skill__competence'
-        )
-        # .annotate(request_count=Count('id'))
-        .all())
+                    'employee',
+                    'employee__position',
+                    'employee__grade',
+                    'skill',
+                    'skill__competence'
+                    ).all())
     serializer_class = TrainigRequestReadSerializer
     http_method_names = ['get', ]
     pagination_class = None
     filter_backends = (DjangoFilterBackend,)
     filterset_class = TrainigRequestFilter
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True)
+        data = serializer.data
+        skill_requests = {}
+        for item in data:
+            skill_name = item['skill']['name']
+            if skill_name not in skill_requests:
+                skill_requests[skill_name] = {
+                    'skill': item['skill']
+                }
+        employees = item.get('employees', [])
+        skill_requests[skill_name]['skill']['employees'].extend(employees)
+        response_data = {
+            'request_count': queryset.count(),
+            'results': skill_requests
+        }
+
+        return Response(response_data)
