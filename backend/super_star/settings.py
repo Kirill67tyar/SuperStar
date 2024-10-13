@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,10 +20,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_extensions',
-    'corsheaders',
+    'django_filters',
     'debug_toolbar',
     'api.apps.ApiConfig',
+    'skills.apps.SkillsConfig',
     'employees.apps.EmployeesConfig',
+    'trainings.apps.TrainingsConfig',
 ]
 
 MIDDLEWARE = [
@@ -93,6 +96,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = '/media/'
+# MEDIA_ROOT = '/media'  # рабочая директрия
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # временная директрия
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -104,6 +110,10 @@ REST_FRAMEWORK = {
     # 'DEFAULT_RENDERER_CLASSES': (
     #     'rest_framework.renderers.JSONRenderer',
     # ),
+    # 'DEFAULT_FILTER_BACKENDS': [
+    #     'django_filters.rest_framework.DjangoFilterBackend'
+    # ],
+
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
