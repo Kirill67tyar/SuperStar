@@ -12,6 +12,7 @@ ALLOWED_HOSTS = [
     '51.250.32.102', 
     '127.0.0.1', 
     'localhost',
+    'super-stars.online',
 ]
 
 
@@ -101,8 +102,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = '/media'  # рабочая директрия
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # временная директрия
+MEDIA_ROOT = '/media'  # рабочая директрия
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # временная директрия
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
