@@ -248,47 +248,42 @@ class TeamGroupedSerializer(serializers.Serializer):
 
 
 class TrainigRequestReadSerializer(serializers.ModelSerializer):
-    employee = serializers.SerializerMethodField()
-    # grade = serializers.SerializerMethodField()
     skill = serializers.SerializerMethodField()
-    # request_count = serializers.SerializerMethodField()
 
     class Meta:
         model = TrainigRequest
         fields = (
             'id',
-            'employee',
             'skill',
-            # 'request_count',
         )
 
-    def get_employee(self, obj):
-        return {
-            'name': obj.employee.name,
-            'position': obj.employee.position.name,
-            'grade': obj.employee.grade.name,
-            'bus_factor': obj.employee.bus_factor,
-            'test_data': {
-                'employee': obj.employee.pk,
-                'position': obj.employee.position.pk,
-                'grade': obj.employee.grade.pk,
-            }
-        }
-
     def get_skill(self, obj):
-        """Количество запросов."""
-        return {
-            'competence': obj.skill.competence.name,
+        skill_data = {
             'name': obj.skill.name,
+            'competence': obj.skill.competence.name,
             'skill_course': f"Курс {obj.skill.name}",
-            'time_of_training': f"{obj.start_date} - {obj.start_date}",
+            'time_of_training': f"{obj.start_date} - {obj.end_date or obj.start_date}",
             'test_data': {
                 'competence': obj.skill.competence.pk,
                 'skill': obj.skill.pk,
             }
         }
 
-    # def get_request_count(self, obj):
-    #     """Количество запросов."""
-    #     return obj.request_count
-        # return TrainigRequest.objects.all().count()
+        employees = []
+        for request in TrainigRequest.objects.filter(skill=obj.skill):
+            employees.append({
+                'name': request.employee.name,
+                'position': request.employee.position.name,
+                'grade': request.employee.grade.name,
+                'bus_factor': request.employee.bus_factor,
+                'test_data': {
+                    'employee': request.employee.pk,
+                    'position': request.employee.position.pk,
+                    'grade': request.employee.grade.pk,
+                }
+            })
+
+        return {
+            'name': skill_data['name'],
+            'employees': employees if employees else []
+        }
