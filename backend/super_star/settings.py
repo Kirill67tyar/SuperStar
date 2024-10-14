@@ -1,19 +1,22 @@
 import os
 from pathlib import Path
 
+from django.core.management.utils import get_random_secret_key
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
-SECRET_KEY = 'django-insecure-7tnu*c4efwwz40qdt^vizh$ar@=+!3p@z6g=6^8sdvoq0eu6vy'
+DEBUG = os.getenv('DEBUG') == 'True'
 
-DEBUG = True
-
-ALLOWED_HOSTS = [
-    '51.250.32.102', 
-    '127.0.0.1', 
-    'localhost',
-    'super-stars.online',
-]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split()
+# ALLOWED_HOSTS = [
+#     '51.250.32.102',
+#     '127.0.0.1',
+#     'localhost',
+#     'super-stars.online',
+# ]
 
 
 INSTALLED_APPS = [
@@ -65,13 +68,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'super_star.wsgi.application'
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB', 'django'),
+        'USER': os.getenv('POSTGRES_USER', 'django'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
+        'HOST': os.getenv('DB_HOST', ''),
+        'PORT': os.getenv('DB_PORT', 5432),
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -90,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'  # 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -99,8 +111,8 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static_backend' 
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'collected_static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/media'  # рабочая директрия
@@ -109,13 +121,19 @@ MEDIA_ROOT = '/media'  # рабочая директрия
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+JSON_RENDERERS = [
+    'rest_framework.renderers.JSONRenderer',
+]
+if DEBUG:
+    JSON_RENDERERS.append('rest_framework.renderers.BrowsableAPIRenderer')
+
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
-    # 'DEFAULT_RENDERER_CLASSES': (
-    #     'rest_framework.renderers.JSONRenderer',
-    # ),
+    'DEFAULT_RENDERER_CLASSES': JSON_RENDERERS,
+
     # 'DEFAULT_FILTER_BACKENDS': [
     #     'django_filters.rest_framework.DjangoFilterBackend'
     # ],

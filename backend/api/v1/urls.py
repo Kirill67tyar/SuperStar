@@ -6,12 +6,14 @@ from api.v1.views import (
     TeamListModelViewSet,
     TrialEmployeeListModelViewSet,
     TrainigRequestView,
+    ThinTeamReadOnly,
 )
 
 
 router_v1 = DefaultRouter()
 router_v1.register('employees', TrialEmployeeListModelViewSet, basename='employees')
 router_v1.register('trainig_requests', TrainigRequestView, basename='trainig_requests')
+router_v1.register('teams-list', ThinTeamReadOnly, basename='teams-list')
 
 urlpatterns_v1 = [
     path('', include(router_v1.urls)),

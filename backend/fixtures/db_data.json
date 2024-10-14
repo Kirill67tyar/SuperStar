@@ -1,1169 +1,5 @@
 [
 {
-    "model": "auth.permission",
-    "pk": 1,
-    "fields": {
-        "name": "Can add log entry",
-        "content_type": 1,
-        "codename": "add_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 2,
-    "fields": {
-        "name": "Can change log entry",
-        "content_type": 1,
-        "codename": "change_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 3,
-    "fields": {
-        "name": "Can delete log entry",
-        "content_type": 1,
-        "codename": "delete_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 4,
-    "fields": {
-        "name": "Can view log entry",
-        "content_type": 1,
-        "codename": "view_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 5,
-    "fields": {
-        "name": "Can add permission",
-        "content_type": 2,
-        "codename": "add_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 6,
-    "fields": {
-        "name": "Can change permission",
-        "content_type": 2,
-        "codename": "change_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 7,
-    "fields": {
-        "name": "Can delete permission",
-        "content_type": 2,
-        "codename": "delete_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 8,
-    "fields": {
-        "name": "Can view permission",
-        "content_type": 2,
-        "codename": "view_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 9,
-    "fields": {
-        "name": "Can add group",
-        "content_type": 3,
-        "codename": "add_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 10,
-    "fields": {
-        "name": "Can change group",
-        "content_type": 3,
-        "codename": "change_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 11,
-    "fields": {
-        "name": "Can delete group",
-        "content_type": 3,
-        "codename": "delete_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 12,
-    "fields": {
-        "name": "Can view group",
-        "content_type": 3,
-        "codename": "view_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 13,
-    "fields": {
-        "name": "Can add user",
-        "content_type": 4,
-        "codename": "add_user"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 14,
-    "fields": {
-        "name": "Can change user",
-        "content_type": 4,
-        "codename": "change_user"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 15,
-    "fields": {
-        "name": "Can delete user",
-        "content_type": 4,
-        "codename": "delete_user"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 16,
-    "fields": {
-        "name": "Can view user",
-        "content_type": 4,
-        "codename": "view_user"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 17,
-    "fields": {
-        "name": "Can add content type",
-        "content_type": 5,
-        "codename": "add_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 18,
-    "fields": {
-        "name": "Can change content type",
-        "content_type": 5,
-        "codename": "change_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 19,
-    "fields": {
-        "name": "Can delete content type",
-        "content_type": 5,
-        "codename": "delete_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 20,
-    "fields": {
-        "name": "Can view content type",
-        "content_type": 5,
-        "codename": "view_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 21,
-    "fields": {
-        "name": "Can add session",
-        "content_type": 6,
-        "codename": "add_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 22,
-    "fields": {
-        "name": "Can change session",
-        "content_type": 6,
-        "codename": "change_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 23,
-    "fields": {
-        "name": "Can delete session",
-        "content_type": 6,
-        "codename": "delete_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 24,
-    "fields": {
-        "name": "Can view session",
-        "content_type": 6,
-        "codename": "view_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 25,
-    "fields": {
-        "name": "Can add Компетенция",
-        "content_type": 7,
-        "codename": "add_competence"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 26,
-    "fields": {
-        "name": "Can change Компетенция",
-        "content_type": 7,
-        "codename": "change_competence"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 27,
-    "fields": {
-        "name": "Can delete Компетенция",
-        "content_type": 7,
-        "codename": "delete_competence"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 28,
-    "fields": {
-        "name": "Can view Компетенция",
-        "content_type": 7,
-        "codename": "view_competence"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 29,
-    "fields": {
-        "name": "Can add Скилл",
-        "content_type": 8,
-        "codename": "add_skill"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 30,
-    "fields": {
-        "name": "Can change Скилл",
-        "content_type": 8,
-        "codename": "change_skill"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 31,
-    "fields": {
-        "name": "Can delete Скилл",
-        "content_type": 8,
-        "codename": "delete_skill"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 32,
-    "fields": {
-        "name": "Can view Скилл",
-        "content_type": 8,
-        "codename": "view_skill"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 33,
-    "fields": {
-        "name": "Can add Сотрудник",
-        "content_type": 9,
-        "codename": "add_employee"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 34,
-    "fields": {
-        "name": "Can change Сотрудник",
-        "content_type": 9,
-        "codename": "change_employee"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 35,
-    "fields": {
-        "name": "Can delete Сотрудник",
-        "content_type": 9,
-        "codename": "delete_employee"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 36,
-    "fields": {
-        "name": "Can view Сотрудник",
-        "content_type": 9,
-        "codename": "view_employee"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 37,
-    "fields": {
-        "name": "Can add Домен",
-        "content_type": 10,
-        "codename": "add_grade"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 38,
-    "fields": {
-        "name": "Can change Домен",
-        "content_type": 10,
-        "codename": "change_grade"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 39,
-    "fields": {
-        "name": "Can delete Домен",
-        "content_type": 10,
-        "codename": "delete_grade"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 40,
-    "fields": {
-        "name": "Can view Домен",
-        "content_type": 10,
-        "codename": "view_grade"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 41,
-    "fields": {
-        "name": "Can add Должность",
-        "content_type": 11,
-        "codename": "add_position"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 42,
-    "fields": {
-        "name": "Can change Должность",
-        "content_type": 11,
-        "codename": "change_position"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 43,
-    "fields": {
-        "name": "Can delete Должность",
-        "content_type": 11,
-        "codename": "delete_position"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 44,
-    "fields": {
-        "name": "Can view Должность",
-        "content_type": 11,
-        "codename": "view_position"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 45,
-    "fields": {
-        "name": "Can add Команда",
-        "content_type": 12,
-        "codename": "add_team"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 46,
-    "fields": {
-        "name": "Can change Команда",
-        "content_type": 12,
-        "codename": "change_team"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 47,
-    "fields": {
-        "name": "Can delete Команда",
-        "content_type": 12,
-        "codename": "delete_team"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 48,
-    "fields": {
-        "name": "Can view Команда",
-        "content_type": 12,
-        "codename": "view_team"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 49,
-    "fields": {
-        "name": "Can add Карьерная цель",
-        "content_type": 13,
-        "codename": "add_target"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 50,
-    "fields": {
-        "name": "Can change Карьерная цель",
-        "content_type": 13,
-        "codename": "change_target"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 51,
-    "fields": {
-        "name": "Can delete Карьерная цель",
-        "content_type": 13,
-        "codename": "delete_target"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 52,
-    "fields": {
-        "name": "Can view Карьерная цель",
-        "content_type": 13,
-        "codename": "view_target"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 53,
-    "fields": {
-        "name": "Can add Запрос",
-        "content_type": 14,
-        "codename": "add_trainigrequest"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 54,
-    "fields": {
-        "name": "Can change Запрос",
-        "content_type": 14,
-        "codename": "change_trainigrequest"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 55,
-    "fields": {
-        "name": "Can delete Запрос",
-        "content_type": 14,
-        "codename": "delete_trainigrequest"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 56,
-    "fields": {
-        "name": "Can view Запрос",
-        "content_type": 14,
-        "codename": "view_trainigrequest"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 57,
-    "fields": {
-        "name": "Can add Требования к позиции",
-        "content_type": 15,
-        "codename": "add_positionrequirement"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 58,
-    "fields": {
-        "name": "Can change Требования к позиции",
-        "content_type": 15,
-        "codename": "change_positionrequirement"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 59,
-    "fields": {
-        "name": "Can delete Требования к позиции",
-        "content_type": 15,
-        "codename": "delete_positionrequirement"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 60,
-    "fields": {
-        "name": "Can view Требования к позиции",
-        "content_type": 15,
-        "codename": "view_positionrequirement"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 61,
-    "fields": {
-        "name": "Can add level",
-        "content_type": 16,
-        "codename": "add_level"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 62,
-    "fields": {
-        "name": "Can change level",
-        "content_type": 16,
-        "codename": "change_level"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 63,
-    "fields": {
-        "name": "Can delete level",
-        "content_type": 16,
-        "codename": "delete_level"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 64,
-    "fields": {
-        "name": "Can view level",
-        "content_type": 16,
-        "codename": "view_level"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 65,
-    "fields": {
-        "name": "Can add Заявка на план развития",
-        "content_type": 17,
-        "codename": "add_developmentplanrequest"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 66,
-    "fields": {
-        "name": "Can change Заявка на план развития",
-        "content_type": 17,
-        "codename": "change_developmentplanrequest"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 67,
-    "fields": {
-        "name": "Can delete Заявка на план развития",
-        "content_type": 17,
-        "codename": "delete_developmentplanrequest"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 68,
-    "fields": {
-        "name": "Can view Заявка на план развития",
-        "content_type": 17,
-        "codename": "view_developmentplanrequest"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 1,
-    "fields": {
-        "app_label": "admin",
-        "model": "logentry"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 2,
-    "fields": {
-        "app_label": "auth",
-        "model": "permission"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 3,
-    "fields": {
-        "app_label": "auth",
-        "model": "group"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 4,
-    "fields": {
-        "app_label": "auth",
-        "model": "user"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 5,
-    "fields": {
-        "app_label": "contenttypes",
-        "model": "contenttype"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 6,
-    "fields": {
-        "app_label": "sessions",
-        "model": "session"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 7,
-    "fields": {
-        "app_label": "skills",
-        "model": "competence"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 8,
-    "fields": {
-        "app_label": "skills",
-        "model": "skill"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 9,
-    "fields": {
-        "app_label": "employees",
-        "model": "employee"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 10,
-    "fields": {
-        "app_label": "employees",
-        "model": "grade"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 11,
-    "fields": {
-        "app_label": "employees",
-        "model": "position"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 12,
-    "fields": {
-        "app_label": "employees",
-        "model": "team"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 13,
-    "fields": {
-        "app_label": "employees",
-        "model": "target"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 14,
-    "fields": {
-        "app_label": "trainings",
-        "model": "trainigrequest"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 15,
-    "fields": {
-        "app_label": "trainings",
-        "model": "positionrequirement"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 16,
-    "fields": {
-        "app_label": "trainings",
-        "model": "level"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 17,
-    "fields": {
-        "app_label": "trainings",
-        "model": "developmentplanrequest"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 15,
-    "fields": {
-        "name": "Анализ данных и ML",
-        "type": "Hard skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 16,
-    "fields": {
-        "name": "Базы данных",
-        "type": "Hard skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 17,
-    "fields": {
-        "name": "Графические редакторы",
-        "type": "Hard skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 18,
-    "fields": {
-        "name": "Деловое общение",
-        "type": "Soft skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 19,
-    "fields": {
-        "name": "Иностранные языки",
-        "type": "Hard skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 20,
-    "fields": {
-        "name": "Лидерство",
-        "type": "Soft skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 21,
-    "fields": {
-        "name": "Межличностные навыки",
-        "type": "Soft skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 22,
-    "fields": {
-        "name": "Операционные системы",
-        "type": "Hard skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 23,
-    "fields": {
-        "name": "Работа в команде",
-        "type": "Soft skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 24,
-    "fields": {
-        "name": "Разработка ПО",
-        "type": "Hard skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 25,
-    "fields": {
-        "name": "Тайм-менеджмент",
-        "type": "Soft skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 26,
-    "fields": {
-        "name": "Техническая документация",
-        "type": "Hard skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 27,
-    "fields": {
-        "name": "Управление проектами",
-        "type": "Hard skills"
-    }
-},
-{
-    "model": "skills.competence",
-    "pk": 28,
-    "fields": {
-        "name": "Языки программирования",
-        "type": "Hard skills"
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 1,
-    "fields": {
-        "name": "ML",
-        "competence": 15
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 2,
-    "fields": {
-        "name": "Pandas",
-        "competence": 15
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 3,
-    "fields": {
-        "name": "Seaborn",
-        "competence": 15
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 4,
-    "fields": {
-        "name": "MS SQL Server",
-        "competence": 16
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 5,
-    "fields": {
-        "name": "MySQL",
-        "competence": 16
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 6,
-    "fields": {
-        "name": "Clickhouse",
-        "competence": 16
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 7,
-    "fields": {
-        "name": "CorelDraw",
-        "competence": 17
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 8,
-    "fields": {
-        "name": "PhotoShop",
-        "competence": 17
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 9,
-    "fields": {
-        "name": "Граммотная письменная речь",
-        "competence": 18
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 10,
-    "fields": {
-        "name": "Деловая переписка",
-        "competence": 18
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 11,
-    "fields": {
-        "name": "Ораторское искусство",
-        "competence": 18
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 12,
-    "fields": {
-        "name": "Китайский язык",
-        "competence": 19
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 13,
-    "fields": {
-        "name": "Английский язык",
-        "competence": 19
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 14,
-    "fields": {
-        "name": "Креативное мышление",
-        "competence": 20
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 15,
-    "fields": {
-        "name": "Принятие решения",
-        "competence": 20
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 16,
-    "fields": {
-        "name": "Эмоциональный интеллект",
-        "competence": 20
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 17,
-    "fields": {
-        "name": "Решение проблем",
-        "competence": 20
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 18,
-    "fields": {
-        "name": "Управление проектом",
-        "competence": 20
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 19,
-    "fields": {
-        "name": "Критическое мышление",
-        "competence": 20
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 20,
-    "fields": {
-        "name": "Межличностные навыки",
-        "competence": 21
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 21,
-    "fields": {
-        "name": "Linux",
-        "competence": 22
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 22,
-    "fields": {
-        "name": "MacOS",
-        "competence": 22
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 23,
-    "fields": {
-        "name": "Windows",
-        "competence": 22
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 24,
-    "fields": {
-        "name": "Обратная связь",
-        "competence": 23
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 25,
-    "fields": {
-        "name": "Менторство",
-        "competence": 23
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 26,
-    "fields": {
-        "name": "Делегирование",
-        "competence": 23
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 27,
-    "fields": {
-        "name": "Разработка мобильных приложений iOS",
-        "competence": 24
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 28,
-    "fields": {
-        "name": "Разработка мобильных приложений Android",
-        "competence": 24
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 29,
-    "fields": {
-        "name": "Разработка веб-приложений",
-        "competence": 24
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 30,
-    "fields": {
-        "name": "Соблюдение сроков",
-        "competence": 25
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 31,
-    "fields": {
-        "name": "Планирование",
-        "competence": 25
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 32,
-    "fields": {
-        "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
-        "competence": 26
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 33,
-    "fields": {
-        "name": "Trello",
-        "competence": 27
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 34,
-    "fields": {
-        "name": "Asana",
-        "competence": 27
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 35,
-    "fields": {
-        "name": "Jira",
-        "competence": 27
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 36,
-    "fields": {
-        "name": "Java",
-        "competence": 28
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 37,
-    "fields": {
-        "name": "Python",
-        "competence": 28
-    }
-},
-{
-    "model": "skills.skill",
-    "pk": 38,
-    "fields": {
-        "name": "C++",
-        "competence": 28
-    }
-},
-{
     "model": "employees.grade",
     "pk": 1,
     "fields": {
@@ -2870,6 +1706,422 @@
         "employee": 89,
         "position": 1,
         "grade": 3
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 15,
+    "fields": {
+        "name": "Анализ данных и ML",
+        "type": "Hard skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 16,
+    "fields": {
+        "name": "Базы данных",
+        "type": "Hard skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 17,
+    "fields": {
+        "name": "Графические редакторы",
+        "type": "Hard skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 18,
+    "fields": {
+        "name": "Деловое общение",
+        "type": "Soft skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 19,
+    "fields": {
+        "name": "Иностранные языки",
+        "type": "Hard skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 20,
+    "fields": {
+        "name": "Лидерство",
+        "type": "Soft skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 21,
+    "fields": {
+        "name": "Межличностные навыки",
+        "type": "Soft skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 22,
+    "fields": {
+        "name": "Операционные системы",
+        "type": "Hard skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 23,
+    "fields": {
+        "name": "Работа в команде",
+        "type": "Soft skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 24,
+    "fields": {
+        "name": "Разработка ПО",
+        "type": "Hard skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 25,
+    "fields": {
+        "name": "Тайм-менеджмент",
+        "type": "Soft skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 26,
+    "fields": {
+        "name": "Техническая документация",
+        "type": "Hard skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 27,
+    "fields": {
+        "name": "Управление проектами",
+        "type": "Hard skills"
+    }
+},
+{
+    "model": "skills.competence",
+    "pk": 28,
+    "fields": {
+        "name": "Языки программирования",
+        "type": "Hard skills"
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 1,
+    "fields": {
+        "name": "ML",
+        "competence": 15
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 2,
+    "fields": {
+        "name": "Pandas",
+        "competence": 15
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 3,
+    "fields": {
+        "name": "Seaborn",
+        "competence": 15
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 4,
+    "fields": {
+        "name": "MS SQL Server",
+        "competence": 16
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 5,
+    "fields": {
+        "name": "MySQL",
+        "competence": 16
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 6,
+    "fields": {
+        "name": "Clickhouse",
+        "competence": 16
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 7,
+    "fields": {
+        "name": "CorelDraw",
+        "competence": 17
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 8,
+    "fields": {
+        "name": "PhotoShop",
+        "competence": 17
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 9,
+    "fields": {
+        "name": "Граммотная письменная речь",
+        "competence": 18
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 10,
+    "fields": {
+        "name": "Деловая переписка",
+        "competence": 18
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 11,
+    "fields": {
+        "name": "Ораторское искусство",
+        "competence": 18
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 12,
+    "fields": {
+        "name": "Китайский язык",
+        "competence": 19
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 13,
+    "fields": {
+        "name": "Английский язык",
+        "competence": 19
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 14,
+    "fields": {
+        "name": "Креативное мышление",
+        "competence": 20
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 15,
+    "fields": {
+        "name": "Принятие решения",
+        "competence": 20
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 16,
+    "fields": {
+        "name": "Эмоциональный интеллект",
+        "competence": 20
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 17,
+    "fields": {
+        "name": "Решение проблем",
+        "competence": 20
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 18,
+    "fields": {
+        "name": "Управление проектом",
+        "competence": 20
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 19,
+    "fields": {
+        "name": "Критическое мышление",
+        "competence": 20
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 20,
+    "fields": {
+        "name": "Межличностные навыки",
+        "competence": 21
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 21,
+    "fields": {
+        "name": "Linux",
+        "competence": 22
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 22,
+    "fields": {
+        "name": "MacOS",
+        "competence": 22
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 23,
+    "fields": {
+        "name": "Windows",
+        "competence": 22
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 24,
+    "fields": {
+        "name": "Обратная связь",
+        "competence": 23
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 25,
+    "fields": {
+        "name": "Менторство",
+        "competence": 23
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 26,
+    "fields": {
+        "name": "Делегирование",
+        "competence": 23
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 27,
+    "fields": {
+        "name": "Разработка мобильных приложений iOS",
+        "competence": 24
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 28,
+    "fields": {
+        "name": "Разработка мобильных приложений Android",
+        "competence": 24
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 29,
+    "fields": {
+        "name": "Разработка веб-приложений",
+        "competence": 24
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 30,
+    "fields": {
+        "name": "Соблюдение сроков",
+        "competence": 25
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 31,
+    "fields": {
+        "name": "Планирование",
+        "competence": 25
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 32,
+    "fields": {
+        "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+        "competence": 26
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 33,
+    "fields": {
+        "name": "Trello",
+        "competence": 27
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 34,
+    "fields": {
+        "name": "Asana",
+        "competence": 27
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 35,
+    "fields": {
+        "name": "Jira",
+        "competence": 27
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 36,
+    "fields": {
+        "name": "Java",
+        "competence": 28
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 37,
+    "fields": {
+        "name": "Python",
+        "competence": 28
+    }
+},
+{
+    "model": "skills.skill",
+    "pk": 38,
+    "fields": {
+        "name": "C++",
+        "competence": 28
     }
 },
 {
@@ -150118,6 +149370,96 @@
         "status": "approved",
         "actual_hours": 0,
         "planned_hours": 35
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 1,
+    "fields": {
+        "employee": 4,
+        "position": 4,
+        "grade": 3
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 2,
+    "fields": {
+        "employee": 11,
+        "position": 3,
+        "grade": 3
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 3,
+    "fields": {
+        "employee": 14,
+        "position": 7,
+        "grade": 3
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 4,
+    "fields": {
+        "employee": 26,
+        "position": 7,
+        "grade": 3
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 5,
+    "fields": {
+        "employee": 29,
+        "position": 4,
+        "grade": 2
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 6,
+    "fields": {
+        "employee": 32,
+        "position": 6,
+        "grade": 2
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 7,
+    "fields": {
+        "employee": 77,
+        "position": 2,
+        "grade": 3
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 8,
+    "fields": {
+        "employee": 85,
+        "position": 1,
+        "grade": 3
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 9,
+    "fields": {
+        "employee": 87,
+        "position": 6,
+        "grade": 3
+    }
+},
+{
+    "model": "trainings.developmentplanrequest",
+    "pk": 10,
+    "fields": {
+        "employee": 89,
+        "position": 1,
+        "grade": 3
     }
 },
 {
