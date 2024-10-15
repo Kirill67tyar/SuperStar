@@ -24,7 +24,7 @@ class Competence(models.Model):
         ordering = ('pk',)
 
     def __str__(self):
-            return self.name
+        return self.name
 
 
 class Skill(models.Model):
@@ -49,4 +49,3 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
-

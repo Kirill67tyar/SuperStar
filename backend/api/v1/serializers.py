@@ -291,6 +291,18 @@ class TrainigRequestReadSerializer(serializers.ModelSerializer):
             'employees': employees if employees else []
         }
 
+
+
+class FilterTeamModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по командам."""
+    class Meta:
+        model = Team
+        fields = (
+            'id',
+            'name',
+
+        )
+
     # def get_skill(self, obj):
     #     """Запросы."""
     #     return {
@@ -317,9 +329,74 @@ class TrainigRequestReadSerializer(serializers.ModelSerializer):
 
 
 class ThinTeamModelSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Team
         fields = (
             'id',
             'name',
+
         )
+
+
+class FilterEmployeeModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по сотдрудникам."""
+    class Meta:
+        model = Employee
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterPositionModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по должностям."""
+    class Meta:
+        model = Position
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterGradeModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по грейдам."""
+    class Meta:
+        model = Grade
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterCompetenceModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по компетенциям."""
+    class Meta:
+        model = Competence
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterSkillModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по компетенциям."""
+    class Meta:
+        model = Skill
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterTrainigRequestModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по календарю."""
+    class Meta:
+        model = TrainigRequest
+        fields = (
+            'id',
+            'start_date',
+            'end_date',
+        )
+
+        

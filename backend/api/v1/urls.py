@@ -6,6 +6,13 @@ from api.v1.views import (
     TeamListModelViewSet,
     TrialEmployeeListModelViewSet,
     TrainigRequestView,
+    TeamFilterReadOnly,
+    EmployeeFilterReadOnly,
+    PositionFilterReadOnly,
+    GradeFilterReadOnly,
+    CompetenceFilterReadOnly,
+    SkillFilterReadOnly,
+    TrainigRequestFilterReadOnly,
     ThinTeamReadOnly,
 )
 
@@ -15,6 +22,17 @@ router_v1.register('employees', TrialEmployeeListModelViewSet, basename='employe
 router_v1.register('trainig_requests', TrainigRequestView, basename='trainig_requests')
 router_v1.register('teams-list', ThinTeamReadOnly, basename='teams-list')
 
+filter_router = DefaultRouter()
+filter_router.register('teams', TeamFilterReadOnly, basename='teams')
+filter_router.register('employees_filters', EmployeeFilterReadOnly, basename='employees_filters')
+filter_router.register('positions', PositionFilterReadOnly, basename='positions')
+filter_router.register('grades', GradeFilterReadOnly, basename='grades')
+filter_router.register('competences', CompetenceFilterReadOnly, basename='competences')
+filter_router.register('skills', SkillFilterReadOnly, basename='skills')
+filter_router.register('data', TrainigRequestFilterReadOnly, basename='data')
+
+
 urlpatterns_v1 = [
     path('', include(router_v1.urls)),
+    path('filters/', include(filter_router.urls)),
 ]

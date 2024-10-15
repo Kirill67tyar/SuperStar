@@ -17,7 +17,10 @@ from trainings.models import (
 from employees.models import (
     Employee,
     Team,
+    Position,
+    Grade
 )
+from skills.models import Competence, Skill
 from api.v1.pagination import CustomTeamPagination
 from api.v1.filters import EmployeeFilter, TeamFilter, TrainigRequestFilter
 from api.v1.serializers import (
@@ -25,6 +28,13 @@ from api.v1.serializers import (
     TeamModelSerializer,
     TeamGroupedSerializer,
     TrainigRequestReadSerializer,
+    FilterTeamModelSerializer,
+    FilterEmployeeModelSerializer,
+    FilterPositionModelSerializer,
+    FilterGradeModelSerializer,
+    FilterCompetenceModelSerializer,
+    FilterSkillModelSerializer,
+    FilterTrainigRequestModelSerializer,
     ThinTeamModelSerializer,
 )
 
@@ -416,23 +426,68 @@ class TrainigRequestView(ModelViewSet):
 
         return Response(response_data)
 
-# # для второго варианта сериализатора
-#     def list(self, request, *args, **kwargs):
-#         queryset = self.filter_queryset(self.get_queryset())
-#         serializer = self.get_serializer(queryset, many=True)
-#         data = serializer.data
-#         skill_requests = {}
-#         for item in data:
-#             skill_name = item['skill']['name']
-#             if skill_name not in skill_requests:
-#                 skill_requests[skill_name] = []
-#             skill_requests[skill_name].append(item)
-#         response_data = {
-#             'request_count': queryset.count(),
-#             'results': skill_requests
-#         }
 
-#         return Response(response_data)
+class TeamFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterTeamModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Team.objects.all()
+
+
+class EmployeeFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterEmployeeModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Employee.objects.all()
+
+
+class PositionFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterPositionModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Position.objects.all()
+
+
+class GradeFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterGradeModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Grade.objects.all()
+
+
+class CompetenceFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterCompetenceModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Competence.objects.all()
+
+
+class SkillFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterSkillModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Skill.objects.all()
+
+
+class TrainigRequestFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterTrainigRequestModelSerializer
+    queryset = TrainigRequest.objects.all()
+    http_method_names = [
+        'get',
+        'options',
+    ]
 
 
 class ThinTeamReadOnly(ReadOnlyModelViewSet):
@@ -442,3 +497,4 @@ class ThinTeamReadOnly(ReadOnlyModelViewSet):
         'options',
     ]
     queryset = Team.objects.all()
+
