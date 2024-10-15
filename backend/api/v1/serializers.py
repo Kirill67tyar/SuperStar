@@ -310,3 +310,13 @@ class TrainigRequestReadSerializer(serializers.ModelSerializer):
     #                 'grade': obj.employee.grade.pk,
     #             }}
     #     }
+
+
+
+class ThinTeamModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        fields = (
+            'id',
+            'name',
+        )

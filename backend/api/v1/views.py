@@ -25,6 +25,7 @@ from api.v1.serializers import (
     TeamModelSerializer,
     TeamGroupedSerializer,
     TrainigRequestReadSerializer,
+    ThinTeamModelSerializer,
 )
 
 
@@ -407,7 +408,7 @@ class TrainigRequestView(ModelViewSet):
 
         response_data = {
             'request_count': queryset.count(),
-            'results': skill_requests
+            'results': skill_requests,
         }
 
         return Response(response_data)
@@ -450,3 +451,11 @@ class TrainigRequestView(ModelViewSet):
 
     #     return Response(response_data)
 
+
+class ThinTeamReadOnly(ReadOnlyModelViewSet):
+    serializer_class = ThinTeamModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Team.objects.all()
