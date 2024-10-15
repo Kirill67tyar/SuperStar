@@ -273,6 +273,7 @@ class TrainigRequestReadSerializer(serializers.ModelSerializer):
         for request in TrainigRequest.objects.filter(skill=obj.skill):
             employees.append({
                 'name': request.employee.name,
+                'image': request.employee.image.url if request.employee.image else None,
                 'position': request.employee.position.name,
                 'grade': request.employee.grade.name,
                 'bus_factor': request.employee.bus_factor,
@@ -284,7 +285,9 @@ class TrainigRequestReadSerializer(serializers.ModelSerializer):
             })
 
         return {
+            'competence': skill_data['competence'],
             'name': skill_data['name'],
+            'skill_course': skill_data['skill_course'],
             'employees': employees if employees else []
         }
 
