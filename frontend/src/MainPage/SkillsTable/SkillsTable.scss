@@ -1,0 +1,236 @@
+.skills {
+  box-sizing: border-box;
+  height: 316px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: none;
+  background-color: inherit;
+  width: 760px;
+  position: relative;
+  margin-left: -10px;
+
+  &__header {
+    box-sizing: border-box;
+    display: flex;
+    padding: 0 0 0 10px;
+    align-items: bottom;
+    margin-bottom: 5px;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  &__title {
+    font-family: "Manrope";
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #42434b;
+    margin: 0;
+    text-align: top;
+    padding-left: 20px;
+    padding-bottom: 10px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 5px;
+    margin-left: 15px;
+
+    &-teams {
+      margin-left: auto;
+    }
+  }
+
+  &__skills-button {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+    color: #42434b;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    padding-bottom: 10px;
+
+    &_active {
+      border-bottom: 1px solid #e10d34;
+      font-weight: 600;
+      line-height: 24px;
+    }
+  }
+}
+
+.table {
+  width: 95%;
+
+  &__container {
+    display: flex;
+    padding-left: 10px;
+    gap: 30px;
+  }
+
+  &__team {
+    width: 68px;
+
+    &-name {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 22px;
+      color: #42434b;
+      text-align: center;
+    }
+  }
+
+  &__sort-button {
+    border: none;
+    background-color: inherit;
+    outline: none;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../assets/icons/sort-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__employeer {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #42434b;
+    text-align: left;
+    min-width: 200px;
+  }
+
+  &__raiting {
+    min-width: 85px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #42434b;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  &__skill {
+    min-width: 60px;
+    white-space: nowrap;
+
+    &-container {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    &-text {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 22px;
+      color: #42434b;
+      text-align: left;
+      width: 44px;
+      overflow: hidden;
+      /* Скрываем все, что выходит за пределы */
+      text-overflow: ellipsis;
+      /* Добавляем многоточие */
+      white-space: nowrap;
+      margin: 0;
+    }
+  }
+
+  &__row {
+    border-radius: 12px;
+
+    &:hover {
+      box-shadow: 0px 8px 12px 0px #42434b26;
+    }
+  }
+}
+
+.employee {
+  display: flex;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #42434b;
+  gap: 5px;
+  padding-left: 5px;
+
+  &__image {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+
+    &_true {
+      box-sizing: border-box;
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      border: 4px solid #e10d34;
+    }
+  }
+
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  &__position {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #787983;
+    margin: 0;
+  }
+
+  &__raiting {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #42434b;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #efefef;
+    border-radius: 8px;
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  &__score {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    border-radius: 8px;
+    border-bottom: 1px solid #e10d34;
+    &-true {
+      border-bottom: 1px solid #009e39;
+    }
+
+    &-value {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 22px;
+      color: #42434b;
+    }
+  }
+}
+
+/* Зафиксируйте первые два столбца */
+table th:nth-child(-n + 2),
+table td:nth-child(-n + 2) {
+  position: sticky;
+  left: 0; /* Установите позицию для фиксации */
+}
+
+/* Тень при наведении на строку */
+table tbody tr:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Настраиваемая тень */
+}

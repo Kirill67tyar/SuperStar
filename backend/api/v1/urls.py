@@ -12,13 +12,15 @@ from api.v1.views import (
     GradeFilterReadOnly,
     CompetenceFilterReadOnly,
     SkillFilterReadOnly,
-    TrainigRequestFilterReadOnly
+    TrainigRequestFilterReadOnly,
+    ThinTeamReadOnly,
 )
 
 
 router_v1 = DefaultRouter()
 router_v1.register('employees', TrialEmployeeListModelViewSet, basename='employees')
 router_v1.register('trainig_requests', TrainigRequestView, basename='trainig_requests')
+router_v1.register('teams-list', ThinTeamReadOnly, basename='teams-list')
 
 filter_router = DefaultRouter()
 filter_router.register('teams', TeamFilterReadOnly, basename='teams')

@@ -34,7 +34,8 @@ from api.v1.serializers import (
     FilterGradeModelSerializer,
     FilterCompetenceModelSerializer,
     FilterSkillModelSerializer,
-    FilterTrainigRequestModelSerializer
+    FilterTrainigRequestModelSerializer,
+    ThinTeamModelSerializer,
 )
 
 
@@ -420,7 +421,7 @@ class TrainigRequestView(ModelViewSet):
 
         response_data = {
             'request_count': queryset.count(),
-            'results': skill_requests
+            'results': skill_requests,
         }
 
         return Response(response_data)
@@ -482,8 +483,18 @@ class SkillFilterReadOnly(ReadOnlyModelViewSet):
 
 class TrainigRequestFilterReadOnly(ReadOnlyModelViewSet):
     serializer_class = FilterTrainigRequestModelSerializer
+    queryset = TrainigRequest.objects.all()
     http_method_names = [
         'get',
         'options',
     ]
-    queryset = TrainigRequest.objects.all()
+
+
+class ThinTeamReadOnly(ReadOnlyModelViewSet):
+    serializer_class = ThinTeamModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Team.objects.all()
+
