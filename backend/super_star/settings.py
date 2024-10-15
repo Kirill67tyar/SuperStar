@@ -134,7 +134,6 @@ REST_FRAMEWORK = {
 
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 INTERNAL_IPS = [
     '127.0.0.1',
@@ -145,5 +144,8 @@ CORS_URLS_REGEX = r'^/api/.*$'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
     'http://127.0.0.1:8080',
+    'https://super-stars.online',
+]
+CSRF_TRUSTED_ORIGINS = [
     'https://super-stars.online',
 ]
