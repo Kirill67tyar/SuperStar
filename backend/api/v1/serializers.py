@@ -56,7 +56,6 @@ class LevelModelSerializer(serializers.ModelSerializer):
             'skill',
             'date',
             'score',
-            # 'latest_score',
         )
 
 
@@ -73,7 +72,6 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
 
     position = serializers.StringRelatedField(read_only=True)
     grade = serializers.StringRelatedField(read_only=True)
-    # team = serializers.StringRelatedField(many=True, read_only=True)
     team = TeamModelSerializer(many=True, read_only=True)
     skills = serializers.SerializerMethodField(read_only=True)
     requests_by_employee = serializers.IntegerField(
@@ -82,11 +80,6 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
     )
     development_plan = serializers.SerializerMethodField(read_only=True)
 
-    # skills = LevelModelSerializer(
-    #     many=True,
-    #     read_only=True,
-    #     source='levels',
-    # )
 
     class Meta:
         model = Employee
@@ -108,43 +101,6 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
         return hasattr(obj, 'development_requests')
 
     def get_skills(self, obj):
-        """
-        skills: [
-            {
-                name: string;
-                score: number;
-                id: number;
-                growth: boolean;
-                accordance: boolean;
-                hard_skills: boolean;
-            },
-            {
-                name: string;
-                score: number;
-                id: number;
-                growth: boolean;
-                accordance: boolean;
-                hard_skills: boolean;
-            },
-            ...
-    ]       
-        или так:
-        skills: {
-            hard_skills: [
-                    {
-                        name: string;
-                        score: number;
-                        id: number;
-                        growth: boolean;
-                        accordance: boolean;
-                    },
-                    ...
-            ],
-            soft_skills: [
-                ...
-            ]
-
-        """
         skills_mapping = {
             'Hard skills': 'hard_skills',
             'Soft skills': 'soft_skills',
@@ -163,8 +119,6 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
                 scores['name'] = level.skill.name
                 if level.latest_score:  # is not None
                     scores['score'] = level.latest_score
-                if level.penultimate_score:  # is not None
-                    scores['penultimate_score'] = level.penultimate_score
                 scores['growth'] = level.latest_score > level.penultimate_score
                 reqirement_score = (
                     requirement_data[obj.position.name][obj.grade.name]
@@ -174,47 +128,10 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
                 if reqirement_score:
                     accordance = level.latest_score >= reqirement_score
                 scores['accordance'] = accordance
+                scores['reqirement_score'] = reqirement_score
                 skills_data[skills_mapping[level.skill.competence.type]].append(
                     scores)
         return skills_data
-
-        # # ? =-=-=-=-=-=-=-=-=-=-=-= новый вариант:
-        # skills_data = {
-        #     'hard_skills': [],
-        #     'soft_skills': [],
-        # }
-        # for level in obj.levels.all():
-        #     if level.skill.competence.type == 'Hard skills':
-        #         pass
-        #     else:
-        #         pass
-
-        # ! =-=-=-=-=-=-=-=-=-=-=-= старый вариант:
-        # skills_data = {}
-        # for level in obj.levels.all():
-        #     competence_type = level.skill.competence.type
-        #     if competence_type in skills_data:
-        #         if level.skill.name not in skills_data[competence_type]:
-        #             level_dict = {level.skill.name: {
-        #                 'score': level.latest_score,
-        #                 'growth': level.latest_score > level.penultimate_score,
-        #             }}
-
-        #             reqirement_score = self.requirement_data[obj.position.name][obj.grade.name].get(
-        #                     level.skill.name)
-        #             accordance = None
-        #             if reqirement_score:
-        #                 accordance = level.latest_score >= reqirement_score
-        #             level_dict[level.skill.name].update(
-        #                 {
-        #                     'accordance': accordance,
-        #                 }
-        #             )
-
-        #             skills_data[competence_type].update(level_dict)
-        #     else:
-        #         skills_data[competence_type] = {}
-        # return skills_data
 
 
 class TeamModelSerializer(serializers.ModelSerializer):

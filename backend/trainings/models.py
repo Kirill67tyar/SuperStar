@@ -121,7 +121,7 @@ class TrainigRequest(models.Model):
         verbose_name='Заметка',
         )
     status = models.CharField(
-        max_length=20, 
+        max_length=20,
         choices=STATUS_CHOICES,
         verbose_name='Статус',
         )
@@ -215,3 +215,30 @@ class PositionRequirement(models.Model):
 
     def __str__(self):
         return str(self.pk)
+
+
+class Rating(models.Model):
+    employee = models.ForeignKey(
+        to=Employee,
+        on_delete=models.CASCADE,
+        related_name='ratings',
+        verbose_name='Сотрудник',
+    )
+    date = models.DateField(
+        verbose_name='Время оценки',
+    )
+    score = models.PositiveSmallIntegerField(
+        verbose_name='Рейтинг',
+    )
+    class Meta:
+        ordering = ('date', 'employee',)
+        verbose_name = 'Рейтинг'
+        verbose_name_plural = 'Рейтинги'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['employee', 'date'],
+                name='unique_employee_date_rating'
+            )
+        ]
+    def __str__(self):
+        return f'{self.employee.pk}, {self.date}: {self.score}'

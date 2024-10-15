@@ -3,8 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from api.v1.views import (
     EmployeeListModelViewSet,
-    TeamListModelViewSet,
-    TrialEmployeeListModelViewSet,
+    EmployeeListModelViewSet,
     TrainigRequestView,
     TeamFilterReadOnly,
     EmployeeFilterReadOnly,
@@ -18,7 +17,7 @@ from api.v1.views import (
 
 
 router_v1 = DefaultRouter()
-router_v1.register('employees', TrialEmployeeListModelViewSet, basename='employees')
+router_v1.register('employees', EmployeeListModelViewSet, basename='employees')
 router_v1.register('trainig_requests', TrainigRequestView, basename='trainig_requests')
 router_v1.register('teams-list', ThinTeamReadOnly, basename='teams-list')
 
