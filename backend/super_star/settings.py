@@ -142,7 +142,8 @@ INTERNAL_IPS = [
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_URLS_REGEX = r'^/api/.*$'
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:8080',
-#     'http://127.0.0.1:8080',
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+    'https://super-stars.online',
+]
