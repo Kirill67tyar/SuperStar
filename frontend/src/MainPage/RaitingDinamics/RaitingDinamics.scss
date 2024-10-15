@@ -1,0 +1,37 @@
+.raiting-dinamics {
+  box-sizing: border-box;
+  height: 316px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: none;
+  background-color: inherit;
+  width: 540px;
+
+  &__header {
+    display: flex;
+    padding: 0 0 0 30px;
+    width: 100%;
+    align-items: bottom;
+    margin-bottom: 5px;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  &__title {
+    font-family: "Manrope";
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #42434b;
+    margin: 0;
+    text-align: top;
+    padding-left: 20px;
+    padding-bottom: 10px;
+  }
+
+  &__download {
+    box-sizing: border-box;
+    margin-bottom: -20px;
+  }
+}

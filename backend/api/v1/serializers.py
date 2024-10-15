@@ -287,3 +287,36 @@ class TrainigRequestReadSerializer(serializers.ModelSerializer):
             'name': skill_data['name'],
             'employees': employees if employees else []
         }
+
+    # def get_skill(self, obj):
+    #     """Запросы."""
+    #     return {
+    #         'competence': obj.skill.competence.name,
+    #         'name': obj.skill.name,
+    #         'skill_course': f"Курс {obj.skill.name}",
+    #         'time_of_training': f"{obj.start_date} - {obj.start_date}",
+    #         'test_data': {
+    #             'competence': obj.skill.competence.pk,
+    #             'skill': obj.skill.pk,
+    #         },
+    #         'employee': {
+    #             'name': obj.employee.name,
+    #             'position': obj.employee.position.name,
+    #             'grade': obj.employee.grade.name,
+    #             'bus_factor': obj.employee.bus_factor,
+    #             'test_data': {
+    #                 'employee': obj.employee.pk,
+    #                 'position': obj.employee.position.pk,
+    #                 'grade': obj.employee.grade.pk,
+    #             }}
+    #     }
+
+
+
+class ThinTeamModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        fields = (
+            'id',
+            'name',
+        )

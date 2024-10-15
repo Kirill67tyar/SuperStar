@@ -1,0 +1,49 @@
+version: '3'
+
+volumes:
+  pg_data_superstars:
+  static_superstars:
+  media_superstars:
+    
+services:
+
+  db:
+    image: postgres:13
+    env_file: .env
+    volumes:
+      - pg_data_superstars:/var/lib/postgresql/data
+
+  backend:
+    image: kirillbogomolov7ric/super-stars-backend
+    env_file: .env
+    volumes:
+      - static_superstars:/backend_static
+      - media_superstars:/media
+    depends_on:
+      - db
+
+
+  # frontend:
+    # image: annakharatova/super-stars
+    # build: ./frontend/
+    # build: ./frontend_spare/
+    # env_file: .env
+    # build:
+    #   context: ./frontend
+    #   dockerfile: Dockerfile
+    # command: cp -r /app/build/. /frontend_static/
+    # command: cp -r /app/build/. /static/
+    # volumes:
+    #   - static_superstars:/static
+
+
+  gateway:
+    build: ./gateway/
+    env_file: .env
+    ports:
+      - 8080:80
+    volumes:
+      - static_superstars:/static
+      - media_superstars:/media/employees/images/
+    depends_on:
+      - backend

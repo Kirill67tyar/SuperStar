@@ -25,6 +25,7 @@ from api.v1.serializers import (
     TeamModelSerializer,
     TeamGroupedSerializer,
     TrainigRequestReadSerializer,
+    ThinTeamModelSerializer,
 )
 
 
@@ -395,18 +396,66 @@ class TrainigRequestView(ModelViewSet):
         queryset = self.filter_queryset(self.get_queryset())
         serializer = self.get_serializer(queryset, many=True)
         data = serializer.data
-        skill_requests = {}
+
+        skill_requests = []
         for item in data:
             skill_name = item['skill']['name']
-            if skill_name not in skill_requests:
-                skill_requests[skill_name] = {
-                    'skill': item['skill']
-                }
-        employees = item.get('employees', [])
-        skill_requests[skill_name]['skill']['employees'].extend(employees)
+            skill_data = {
+                'name': skill_name,
+                'employees': item['skill']['employees']
+            }
+            skill_requests.append(skill_data)
+
         response_data = {
             'request_count': queryset.count(),
-            'results': skill_requests
+            'results': skill_requests,
         }
 
         return Response(response_data)
+
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.filter_queryset(self.get_queryset())
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     data = serializer.data
+    #     skill_requests = {}
+    #     for item in data:
+    #         skill_name = item['skill']['name']
+    #         if skill_name not in skill_requests:
+    #             skill_requests[skill_name] = {
+    #                 'skill': item['skill']
+    #             }
+    #     employees = item.get('employees', [])
+    #     skill_requests[skill_name]['skill']['employees'].extend(employees)
+    #     response_data = {
+    #         'request_count': queryset.count(),
+    #         'results': skill_requests
+    #     }
+
+    #     return Response(response_data)
+
+
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.filter_queryset(self.get_queryset())
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     data = serializer.data
+    #     skill_requests = {}
+    #     for item in data:
+    #         skill_name = item['skill']['name']
+    #         if skill_name not in skill_requests:
+    #             skill_requests[skill_name] = []
+    #         skill_requests[skill_name].append(item)
+    #     response_data = {
+    #         'request_count': queryset.count(),
+    #         'results': skill_requests
+    #     }
+
+    #     return Response(response_data)
+
+
+class ThinTeamReadOnly(ReadOnlyModelViewSet):
+    serializer_class = ThinTeamModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Team.objects.all()

@@ -1,0 +1,4209 @@
+{
+  "links": {
+    "next": "http://127.0.0.1:8000/api/v1/employees/?team=Core",
+    "previous": null
+  },
+  "current_team": "Core",
+  "count": 13,
+  "employees": [
+    {
+      "name": "Соколов Тимур",
+      "position": "Тестировщик",
+      "bus_factor": true,
+      "grade": "Senior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2023-02-25",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "Скворцова Мария",
+      "position": "Системный аналитик",
+      "bus_factor": true,
+      "grade": "Middle",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2022-08-22",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 3,
+            "penultimate_score": 2,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "Панов Григорий",
+      "position": "Бизнес Аналитик",
+      "bus_factor": true,
+      "grade": "Senior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2024-02-23",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 3,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 3,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 3,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 3,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Павлова Дарина",
+      "position": "Системный аналитик",
+      "bus_factor": false,
+      "grade": "Junior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2023-03-27",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Лукина Нина",
+      "position": "Дизайнер",
+      "bus_factor": false,
+      "grade": "Junior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2023-06-20",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 2,
+            "penultimate_score": 2,
+            "growth": false,
+            "accordance": false
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ефремов Вячеслав",
+      "position": "Тимлид",
+      "bus_factor": false,
+      "grade": "Senior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2022-03-28",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Исаев Александр",
+      "position": "Менеджер проекта",
+      "bus_factor": false,
+      "grade": "Middle",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2022-10-06",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 2,
+            "penultimate_score": 2,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 2,
+            "penultimate_score": 2,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Никитин Андрей",
+      "position": "Тестировщик",
+      "bus_factor": false,
+      "grade": "Junior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2023-04-23",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 3,
+            "penultimate_score": 2,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Смирнова Анна",
+      "position": "Менеджер проекта",
+      "bus_factor": false,
+      "grade": "Junior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2023-04-07",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 3,
+            "penultimate_score": 2,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 2,
+            "penultimate_score": 2,
+            "growth": false,
+            "accordance": null
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Герасимова Юлия",
+      "position": "Тестировщик",
+      "bus_factor": false,
+      "grade": "Middle",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2022-02-20",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ларина Василиса",
+      "position": "Разработчик / Программист",
+      "bus_factor": true,
+      "grade": "Junior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2024-03-18",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 3,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 3,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 5,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 4,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 3,
+            "penultimate_score": 1,
+            "growth": true,
+            "accordance": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Майорова Алиса",
+      "position": "Бизнес Аналитик",
+      "bus_factor": false,
+      "grade": "Junior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2022-06-03",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 3,
+            "penultimate_score": 2,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 3,
+            "penultimate_score": 2,
+            "growth": true,
+            "accordance": null
+          },
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": null
+          },
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 3,
+            "penultimate_score": 2,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "Пирогов Артемий",
+      "position": "Тимлид",
+      "bus_factor": false,
+      "grade": "Senior",
+      "team": [
+        {
+          "id": 1,
+          "name": "Core"
+        }
+      ],
+      "created": "2022-11-16",
+      "skills": {
+        "hard_skills": [
+          {
+            "id": 38,
+            "name": "C++",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 6,
+            "name": "Clickhouse",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 7,
+            "name": "CorelDraw",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 22,
+            "name": "MacOS",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 2,
+            "name": "Pandas",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 8,
+            "name": "PhotoShop",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 23,
+            "name": "Windows",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 12,
+            "name": "Китайский язык",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 29,
+            "name": "Разработка веб-приложений",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 27,
+            "name": "Разработка мобильных приложений iOS",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 34,
+            "name": "Asana",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 21,
+            "name": "Linux",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 4,
+            "name": "MS SQL Server",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 5,
+            "name": "MySQL",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 3,
+            "name": "Seaborn",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 13,
+            "name": "Английский язык",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 32,
+            "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 28,
+            "name": "Разработка мобильных приложений Android",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 36,
+            "name": "Java",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 37,
+            "name": "Python",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 35,
+            "name": "Jira",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 1,
+            "name": "ML",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 33,
+            "name": "Trello",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ],
+        "soft_skills": [
+          {
+            "id": 26,
+            "name": "Делегирование",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 19,
+            "name": "Критическое мышление",
+            "score": 5,
+            "penultimate_score": 4,
+            "growth": true,
+            "accordance": true
+          },
+          {
+            "id": 20,
+            "name": "Межличностные навыки",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 25,
+            "name": "Менторство",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 31,
+            "name": "Планирование",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 15,
+            "name": "Принятие решения",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 17,
+            "name": "Решение проблем",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 18,
+            "name": "Управление проектом",
+            "score": 5,
+            "penultimate_score": 5,
+            "growth": false,
+            "accordance": true
+          },
+          {
+            "id": 9,
+            "name": "Граммотная письменная речь",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 10,
+            "name": "Деловая переписка",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 24,
+            "name": "Обратная связь",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 11,
+            "name": "Ораторское искусство",
+            "score": 4,
+            "penultimate_score": 3,
+            "growth": true,
+            "accordance": false
+          },
+          {
+            "id": 30,
+            "name": "Соблюдение сроков",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 16,
+            "name": "Эмоциональный интеллект",
+            "score": 4,
+            "penultimate_score": 4,
+            "growth": false,
+            "accordance": false
+          },
+          {
+            "id": 14,
+            "name": "Креативное мышление",
+            "score": 3,
+            "penultimate_score": 3,
+            "growth": false,
+            "accordance": false
+          }
+        ]
+      }
+    }
+  ]
+}

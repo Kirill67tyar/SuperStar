@@ -1,0 +1,100 @@
+.training {
+  margin: 0 auto;
+  padding: 25px 60px 50px;
+  color: #42434b;
+
+  &__header {
+    display: flex;
+    gap: 10px;
+    align-content: center;
+  }
+
+  &__tr {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+
+    text-align: left;
+    padding-bottom: 20px;
+    border-bottom: 1px solid firebrick;
+  }
+
+  &__main {
+    margin-top: 30px;
+  }
+
+  &__competents {
+    text-align: left;
+    width: 325px;
+    border-bottom: 1px solid #dfdfdf;
+    padding-left: 13px;
+    padding-bottom: 13px;
+  }
+
+  &__skill {
+    width: 230px;
+    border-bottom: 1px solid #dfdfdf;
+    padding-left: 10px;
+    padding-bottom: 13px;
+  }
+
+  &__program {
+    width: 554x;
+    border-bottom: 1px solid #dfdfdf;
+    padding-left: 13px;
+  }
+
+  &__employer {
+    width: 230px;
+    border-bottom: 1px solid #dfdfdf;
+    padding-left: 50px;
+  }
+
+  &__courses {
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #42434b;
+    border-bottom: 1px solid #dfdfdf;
+    padding-left: 13px;
+    padding-top: 8px;
+    margin-top: 0;
+    &_item {
+      border: none;
+    }
+    &-cell {
+      display: flex;
+      align-items: center;
+      min-height: 100px;
+      box-sizing: border-box;
+    }
+
+    &-program {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      border-bottom: 1px solid #dfdfdf;
+    }
+  }
+
+  &__dates {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  &__employee-count {
+    background-color: #efefef;
+    padding: 4px 6px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  &__employee-list {
+    padding-left: 50px;
+    border-bottom: 1px solid #dfdfdf;
+  }
+}
