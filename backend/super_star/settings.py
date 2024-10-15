@@ -11,13 +11,6 @@ SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split()
-# ALLOWED_HOSTS = [
-#     '51.250.32.102',
-#     '127.0.0.1',
-#     'localhost',
-#     'super-stars.online',
-# ]
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -102,7 +95,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'ru-RU'  # 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
