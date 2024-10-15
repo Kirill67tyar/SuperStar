@@ -291,25 +291,73 @@ class TrainigRequestReadSerializer(serializers.ModelSerializer):
             'employees': employees if employees else []
         }
 
-    # def get_skill(self, obj):
-    #     """Запросы."""
-    #     return {
-    #         'competence': obj.skill.competence.name,
-    #         'name': obj.skill.name,
-    #         'skill_course': f"Курс {obj.skill.name}",
-    #         'time_of_training': f"{obj.start_date} - {obj.start_date}",
-    #         'test_data': {
-    #             'competence': obj.skill.competence.pk,
-    #             'skill': obj.skill.pk,
-    #         },
-    #         'employee': {
-    #             'name': obj.employee.name,
-    #             'position': obj.employee.position.name,
-    #             'grade': obj.employee.grade.name,
-    #             'bus_factor': obj.employee.bus_factor,
-    #             'test_data': {
-    #                 'employee': obj.employee.pk,
-    #                 'position': obj.employee.position.pk,
-    #                 'grade': obj.employee.grade.pk,
-    #             }}
-    #     }
+
+class FilterTeamModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по командам."""
+    class Meta:
+        model = Team
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterEmployeeModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по сотдрудникам."""
+    class Meta:
+        model = Employee
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterPositionModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по должностям."""
+    class Meta:
+        model = Position
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterGradeModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по грейдам."""
+    class Meta:
+        model = Grade
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterCompetenceModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по компетенциям."""
+    class Meta:
+        model = Competence
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterSkillModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по компетенциям."""
+    class Meta:
+        model = Skill
+        fields = (
+            'id',
+            'name',
+        )
+
+
+class FilterTrainigRequestModelSerializer(serializers.ModelSerializer):
+    """Сериализатор фильтрации по календарю."""
+    class Meta:
+        model = TrainigRequest
+        fields = (
+            'id',
+            'start_date',
+            'end_date',
+        )
