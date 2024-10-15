@@ -1,0 +1,431 @@
+{
+  "request_count": 26,
+  "results": {
+    "MacOS": {
+      "skill": {
+        "name": "MacOS",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          },
+          {
+            "name": "Волкова Ксения",
+            "position": "Бизнес Аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 77,
+              "position": 2,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Pandas": {
+      "skill": {
+        "name": "Pandas",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Креативное мышление": {
+      "skill": {
+        "name": "Креативное мышление",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Принятие решения": {
+      "skill": {
+        "name": "Принятие решения",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Решение проблем": {
+      "skill": {
+        "name": "Решение проблем",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Управление проектом": {
+      "skill": {
+        "name": "Управление проектом",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          },
+          {
+            "name": "Смирнова Милана",
+            "position": "Менеджер продукта",
+            "grade": "Senior",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 10,
+              "position": 7,
+              "grade": 3
+            }
+          }
+        ]
+      }
+    },
+    "Эмоциональный интеллект": {
+      "skill": {
+        "name": "Эмоциональный интеллект",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Windows": {
+      "skill": {
+        "name": "Windows",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          },
+          {
+            "name": "Волкова Ксения",
+            "position": "Бизнес Аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 77,
+              "position": 2,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Trello": {
+      "skill": {
+        "name": "Trello",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          },
+          {
+            "name": "Волкова Ксения",
+            "position": "Бизнес Аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 77,
+              "position": 2,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Навыки работы с технической документацией и разрешением технических проблем у пользователей.": {
+      "skill": {
+        "name": "Навыки работы с технической документацией и разрешением технических проблем у пользователей.",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Делегирование": {
+      "skill": {
+        "name": "Делегирование",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Seaborn": {
+      "skill": {
+        "name": "Seaborn",
+        "employees": [
+          {
+            "name": "Скворцова Мария",
+            "position": "Системный аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 4,
+              "position": 4,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Python": {
+      "skill": {
+        "name": "Python",
+        "employees": [
+          {
+            "name": "Смирнова Милана",
+            "position": "Менеджер продукта",
+            "grade": "Senior",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 10,
+              "position": 7,
+              "grade": 3
+            }
+          }
+        ]
+      }
+    },
+    "Межличностные навыки": {
+      "skill": {
+        "name": "Межличностные навыки",
+        "employees": [
+          {
+            "name": "Смирнова Милана",
+            "position": "Менеджер продукта",
+            "grade": "Senior",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 10,
+              "position": 7,
+              "grade": 3
+            }
+          }
+        ]
+      }
+    },
+    "Ораторское искусство": {
+      "skill": {
+        "name": "Ораторское искусство",
+        "employees": [
+          {
+            "name": "Смирнова Милана",
+            "position": "Менеджер продукта",
+            "grade": "Senior",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 10,
+              "position": 7,
+              "grade": 3
+            }
+          }
+        ]
+      }
+    },
+    "Linux": {
+      "skill": {
+        "name": "Linux",
+        "employees": [
+          {
+            "name": "Смирнова Милана",
+            "position": "Менеджер продукта",
+            "grade": "Senior",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 10,
+              "position": 7,
+              "grade": 3
+            }
+          },
+          {
+            "name": "Волкова Ксения",
+            "position": "Бизнес Аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 77,
+              "position": 2,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Jira": {
+      "skill": {
+        "name": "Jira",
+        "employees": [
+          {
+            "name": "Смирнова Милана",
+            "position": "Менеджер продукта",
+            "grade": "Senior",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 10,
+              "position": 7,
+              "grade": 3
+            }
+          },
+          {
+            "name": "Волкова Ксения",
+            "position": "Бизнес Аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 77,
+              "position": 2,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "CorelDraw": {
+      "skill": {
+        "name": "CorelDraw",
+        "employees": [
+          {
+            "name": "Волкова Ксения",
+            "position": "Бизнес Аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 77,
+              "position": 2,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "PhotoShop": {
+      "skill": {
+        "name": "PhotoShop",
+        "employees": [
+          {
+            "name": "Волкова Ксения",
+            "position": "Бизнес Аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 77,
+              "position": 2,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    },
+    "Asana": {
+      "skill": {
+        "name": "Asana",
+        "employees": [
+          {
+            "name": "Волкова Ксения",
+            "position": "Бизнес Аналитик",
+            "grade": "Middle",
+            "bus_factor": false,
+            "test_data": {
+              "employee": 77,
+              "position": 2,
+              "grade": 2
+            }
+          }
+        ]
+      }
+    }
+  }
+}
