@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_extensions',
     'django_filters',
+    'corsheaders',
     'debug_toolbar',
     'api.apps.ApiConfig',
     'skills.apps.SkillsConfig',
@@ -138,3 +139,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_URLS_REGEX = r'^/api/.*$'
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:8080',
+#     'http://127.0.0.1:8080',
+# ]
