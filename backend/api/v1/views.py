@@ -17,208 +17,28 @@ from trainings.models import (
 from employees.models import (
     Employee,
     Team,
+    Position,
+    Grade
 )
+from skills.models import Competence, Skill
 from api.v1.pagination import CustomTeamPagination
-from api.v1.filters import EmployeeFilter, TeamFilter, TrainigRequestFilter
+from api.v1.filters import EmployeeFilter, TrainigRequestFilter
 from api.v1.serializers import (
     EmployeeModelSerializer,
-    TeamModelSerializer,
-    TeamGroupedSerializer,
     TrainigRequestReadSerializer,
+    FilterTeamModelSerializer,
+    FilterEmployeeModelSerializer,
+    FilterPositionModelSerializer,
+    FilterGradeModelSerializer,
+    FilterCompetenceModelSerializer,
+    FilterSkillModelSerializer,
+    FilterTrainigRequestModelSerializer,
     ThinTeamModelSerializer,
 )
 
 
 class EmployeeListModelViewSet(mixins.ListModelMixin,
-                               GenericViewSet,):
-    http_method_names = [
-        'get',
-        'options',
-    ]
-    serializer_class = EmployeeModelSerializer
-    queryset = (Employee.objects
-                .select_related('position', 'grade'))
-    filter_backends = (DjangoFilterBackend,)
-    filterset_class = EmployeeFilter
-    filterset_fields = (
-        'team',
-    )
-
-    def get_queryset(self):
-        # Подзапрос для получения последней оценки
-        latest_scores = Level.objects.filter(
-            skill=OuterRef('skill'),
-            employee=OuterRef('employee')
-        ).order_by('-date').values('score')[:1]
-
-        # Подзапрос для получения предпоследней оценки
-        penultimate_scores = Level.objects.filter(
-            skill=OuterRef('skill'),
-            employee=OuterRef('employee')
-        ).order_by('-date').values('score')[1:2]
-
-        # Запрос для получения всех уровней с аннотациями
-        skills_with_scores = (
-            Level.objects
-            .select_related('employee', 'skill')
-            .annotate(
-                latest_score=Subquery(latest_scores),
-                penultimate_score=Coalesce(
-                    Subquery(penultimate_scores), 5)
-            )
-            # # distinct('skill') по идее должно работать на postgres
-            # # когда подключим к postgres, код который в сериалайзере
-            # # убирает лишние level будет не нужен
-            # .distinct('skill')
-        )
-        return self.queryset.prefetch_related(
-            'team',
-            Prefetch('levels', queryset=skills_with_scores)
-        )
-
-
-class TeamListModelViewSet(mixins.ListModelMixin,
-                           GenericViewSet,):
-    queryset = Team.objects.all()
-    serializer_class = TeamModelSerializer
-    http_method_names = [
-        'get',
-        'options',
-    ]
-    filter_backends = [DjangoFilterBackend,]
-    filterset_class = TeamFilter
-
-    def get_queryset(self):
-        # self.request.query_params
-        # Подзапрос для получения последней оценки
-        a = 1
-        latest_scores = Level.objects.filter(
-            skill=OuterRef('skill'),
-            employee=OuterRef('employee')
-        ).order_by('-date').values('score')[:1]
-
-        # Подзапрос для получения предпоследней оценки
-        penultimate_scores = Level.objects.filter(
-            skill=OuterRef('skill'),
-            employee=OuterRef('employee')
-        ).order_by('-date').values('score')[1:2]
-
-        # Запрос для получения всех уровней с аннотациями
-        skills_with_scores = (
-            Level.objects
-            .select_related(
-                'employee',
-                'skill',
-                'skill__competence',
-            )
-            .annotate(
-                latest_score=Subquery(latest_scores),
-                penultimate_score=Coalesce(
-                    Subquery(penultimate_scores), 5)
-            )
-        )
-        # ! =-=-=-=-=
-        # position_requirement_subquery = PositionRequirement.objects.filter(
-        #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
-        #         ).values('skill', 'score')
-        # position_requirement_subquery = PositionRequirement.objects.filter(
-        #     Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
-        # )
-        # ! =-=-=-=-=
-        team_members = (
-            Employee.objects
-            .select_related('position', 'grade')
-            .prefetch_related(
-                'team',
-                # 'position__requirements_position',  # или такой вариант
-                Prefetch('levels', queryset=skills_with_scores),
-                # Prefetch('position__requirements_position', queryset=position_requirement_subquery, to_attr='position_requirements')
-            )
-            # .annotate(
-            #     position_requirements=Subquery(
-            #         position_requirements_subquery
-            #         # .values('id')
-            #     )
-            # )
-        )
-        # team_members = Employee.objects.select_related('position', 'grade').prefetch_related(
-        #     'team',
-        #     Prefetch('levels', queryset=skills_with_scores)
-        # )
-        return self.queryset.prefetch_related(
-            Prefetch(
-                'employees',
-                queryset=team_members,
-            )
-        )
-    # def get_queryset(self):
-    #     # self.request.query_params
-    #     # Подзапрос для получения последней оценки
-    #     a = 1
-    #     latest_scores = Level.objects.filter(
-    #         skill=OuterRef('skill'),
-    #         employee=OuterRef('employee')
-    #     ).order_by('-date').values('score')[:1]
-
-    #     # Подзапрос для получения предпоследней оценки
-    #     penultimate_scores = Level.objects.filter(
-    #         skill=OuterRef('skill'),
-    #         employee=OuterRef('employee')
-    #     ).order_by('-date').values('score')[1:2]
-
-    #     # Запрос для получения всех уровней с аннотациями
-    #     skills_with_scores = (
-    #         Level.objects
-    #         .select_related(
-    #             'employee',
-    #             'skill',
-    #             'skill__competence',
-    #         )
-    #         .annotate(
-    #             latest_score=Subquery(latest_scores),
-    #             penultimate_score=Coalesce(
-    #                 Subquery(penultimate_scores), 5)
-    #         )
-    #     )
-    #     # ! =-=-=-=-=
-    #     # position_requirement_subquery = PositionRequirement.objects.filter(
-    #     #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
-    #     #         ).values('skill', 'score')
-    #     position_requirement_subquery = PositionRequirement.objects.filter(
-    #         Q(position=OuterRef('position')) & Q(grade=OuterRef('grade'))
-    #     )
-    #     # ! =-=-=-=-=
-    #     team_members = (
-    #         Employee.objects
-    #         .select_related('position', 'grade')
-    #         .prefetch_related(
-    #             'team',
-    #             # 'position__requirements_position',  # или такой вариант
-    #             Prefetch('levels', queryset=skills_with_scores),
-    #             # Prefetch('position__requirements_position', queryset=position_requirement_subquery, to_attr='position_requirements')
-    #         )
-    #         # .annotate(
-    #         #     position_requirements=Subquery(
-    #         #         position_requirements_subquery
-    #         #         # .values('id')
-    #         #     )
-    #         # )
-    #     )
-    #     # team_members = Employee.objects.select_related('position', 'grade').prefetch_related(
-    #     #     'team',
-    #     #     Prefetch('levels', queryset=skills_with_scores)
-    #     # )
-    #     return self.queryset.prefetch_related(
-    #         Prefetch(
-    #             'employees',
-    #             queryset=team_members,
-    #         )
-    #     )
-
-
-# class TrialEmployeeListModelViewSet(mixins.ListModelMixin,
-#                                     GenericViewSet,):
-class TrialEmployeeListModelViewSet(ModelViewSet):
+                                    GenericViewSet,):
     http_method_names = [
         'get',
         'options',
@@ -345,37 +165,6 @@ class TrialEmployeeListModelViewSet(ModelViewSet):
         )
         return Response(serializer.data)
 
-    # def list(self, request, *args, **kwargs):
-    #     # Получаем всех сотрудников с учётом фильтров и предвыборкой команд
-    #     employees = self.filter_queryset(
-    #         self.get_queryset()  # Оптимизация для избежания n+1 проблемы
-    #     )
-    #     # employees = self.get_queryset()  # Оптимизация для избежания n+1 проблемы
-
-    #     # Получаем все уникальные команды, к которым относятся сотрудники
-    #     # teams = Team.objects.prefetch_related('employees').filter(employees__in=employees).distinct()
-    #     teams = (
-    #         Team.objects
-    #         .prefetch_related(
-    #             Prefetch(
-    #                 'employees',
-    #                 queryset=employees,
-    #             )
-    #         )
-    #         .filter(employees__in=employees)
-    #         .distinct()
-    #     )
-
-    #     # Сериализуем данные по командам, передавая сотрудников через context
-    #     serializer = TeamGroupedSerializer(
-    #         teams,
-    #         many=True,
-    #         context={'employees': employees})
-    #     return Response(
-    #         serializer.data,
-    #         status=status.HTTP_200_OK
-    #         )
-
 
 class TrainigRequestView(ModelViewSet):
     queryset = (TrainigRequest.objects
@@ -416,23 +205,68 @@ class TrainigRequestView(ModelViewSet):
 
         return Response(response_data)
 
-# # для второго варианта сериализатора
-#     def list(self, request, *args, **kwargs):
-#         queryset = self.filter_queryset(self.get_queryset())
-#         serializer = self.get_serializer(queryset, many=True)
-#         data = serializer.data
-#         skill_requests = {}
-#         for item in data:
-#             skill_name = item['skill']['name']
-#             if skill_name not in skill_requests:
-#                 skill_requests[skill_name] = []
-#             skill_requests[skill_name].append(item)
-#         response_data = {
-#             'request_count': queryset.count(),
-#             'results': skill_requests
-#         }
 
-#         return Response(response_data)
+class TeamFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterTeamModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Team.objects.all()
+
+
+class EmployeeFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterEmployeeModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Employee.objects.all()
+
+
+class PositionFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterPositionModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Position.objects.all()
+
+
+class GradeFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterGradeModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Grade.objects.all()
+
+
+class CompetenceFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterCompetenceModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Competence.objects.all()
+
+
+class SkillFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterSkillModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Skill.objects.all()
+
+
+class TrainigRequestFilterReadOnly(ReadOnlyModelViewSet):
+    serializer_class = FilterTrainigRequestModelSerializer
+    queryset = TrainigRequest.objects.all()
+    http_method_names = [
+        'get',
+        'options',
+    ]
 
 
 class ThinTeamReadOnly(ReadOnlyModelViewSet):
@@ -442,3 +276,20 @@ class ThinTeamReadOnly(ReadOnlyModelViewSet):
         'options',
     ]
     queryset = Team.objects.all()
+
+
+class CompetenceModelViewSet(ModelViewSet):
+    # serializer_class = ThinTeamModelSerializer
+    http_method_names = [
+        'get',
+        'options',
+    ]
+    queryset = Competence.objects.all()
+    """
+    По выборке берём компетенции и смотрим в таблице Level, суммируем скиллы относящиеся к этой компетенции, 
+    в зависимости от выбранной даты (от и до), и делим на количество. Всё это выбирается по выборке, которая фильтруется.
+    Насчёт даты, то суммировать надо по месяцам. Если взят сентябрь, даже 30, то он берётся весь.
+    """
+    pass
+
+
