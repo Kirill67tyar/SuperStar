@@ -152,3 +152,6 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://super-stars.online',
 ]
+SWAGGER_SETTINGS = {
+    'USE_HTTPS': True,
+}
