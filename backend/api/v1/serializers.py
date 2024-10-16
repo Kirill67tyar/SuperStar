@@ -7,6 +7,7 @@ from trainings.models import (
     TrainigRequest,
     PositionRequirement,
     Level,
+    Rating,
 )
 from skills.models import Competence, Skill
 from employees.models import (
@@ -17,37 +18,14 @@ from employees.models import (
     Target,
 )
 
-"""
-name = models.CharField(
-        max_length=100,
-        verbose_name='Фамилия Имя',
-    )
-    position = models.ForeignKey(
-        Position,
-        on_delete=models.CASCADE,
-        # related_name='employees',
-        verbose_name='Дожность',
-    )
-    bus_factor = models.BooleanField(
-        default=False,
-        verbose_name='Автобусный фактор',
-    )
-    grade = models.ForeignKey(
-        Grade,
-        # related_name='employees'
-        on_delete=models.CASCADE,
-        verbose_name='Грейд',
-    )
-    team = models.ManyToManyField(
-        Team,
-        # related_name='employees'
-        verbose_name='Команды',
-    )
-    created = models.DateField(
-        verbose_name='Добавлено',
-    )
-"""
 
+class RatingModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rating
+        fields = (
+            'date',
+            'score',
+        )
 
 class LevelModelSerializer(serializers.ModelSerializer):
     class Meta:
@@ -79,7 +57,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
         read_only=True,
     )
     development_plan = serializers.SerializerMethodField(read_only=True)
-
+    ratings = RatingModelSerializer(many=True, read_only=True,)
 
     class Meta:
         model = Employee
@@ -94,6 +72,7 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
             'created',
             'requests_by_employee',
             'development_plan',
+            'ratings',
             'skills',
         )
 
