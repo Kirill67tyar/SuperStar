@@ -7,11 +7,13 @@ django-debug-toolbar==4.4.6
 django-extensions==3.2.3
 django-filter==24.3
 djangorestframework==3.14.0
+drf-yasg==1.21.7
 et-xmlfile==1.1.0
 exceptiongroup==1.2.2
 executing==2.1.0
 flake8==7.1.1
 gunicorn==23.0.0
+inflection==0.5.1
 iniconfig==2.0.0
 ipython==8.27.0
 isort==5.13.2
@@ -37,6 +39,7 @@ pytest==8.3.3
 pytest-django==4.9.0
 python-dateutil==2.9.0.post0
 pytz==2024.2
+PyYAML==6.0.2
 six==1.16.0
 sqlparse==0.5.1
 stack-data==0.6.3
@@ -44,4 +47,5 @@ tomli==2.0.1
 traitlets==5.14.3
 typing_extensions==4.12.2
 tzdata==2024.2
+uritemplate==4.1.1
 wcwidth==0.2.13

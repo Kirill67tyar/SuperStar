@@ -1,12 +1,9 @@
-from rest_framework import status
 from rest_framework.response import Response
 from django.db.models import OuterRef, Subquery, Prefetch, Q, Count
 from django.db.models.functions import Coalesce
-from django.db.models import Max, F
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, GenericViewSet
 from rest_framework import mixins
 from django_filters.rest_framework import DjangoFilterBackend
-from itertools import groupby
 
 
 from trainings.models import (
@@ -38,7 +35,7 @@ from api.v1.serializers import (
 
 
 class EmployeeListModelViewSet(mixins.ListModelMixin,
-                                    GenericViewSet,):
+                               GenericViewSet,):
     http_method_names = [
         'get',
         'options',
@@ -174,7 +171,7 @@ class TrainigRequestView(ModelViewSet):
                     'employee__grade',
                     'skill',
                     'skill__competence'
-                    ).all())
+                ).all())
     serializer_class = TrainigRequestReadSerializer
     http_method_names = ['get', ]
     pagination_class = None
@@ -206,7 +203,8 @@ class TrainigRequestView(ModelViewSet):
         return Response(response_data)
 
 
-class TeamFilterReadOnly(ReadOnlyModelViewSet):
+class TeamFilterReadOnly(mixins.ListModelMixin,
+                         GenericViewSet,):
     serializer_class = FilterTeamModelSerializer
     http_method_names = [
         'get',
@@ -215,7 +213,8 @@ class TeamFilterReadOnly(ReadOnlyModelViewSet):
     queryset = Team.objects.all()
 
 
-class EmployeeFilterReadOnly(ReadOnlyModelViewSet):
+class EmployeeFilterReadOnly(mixins.ListModelMixin,
+                             GenericViewSet,):
     serializer_class = FilterEmployeeModelSerializer
     http_method_names = [
         'get',
@@ -224,7 +223,8 @@ class EmployeeFilterReadOnly(ReadOnlyModelViewSet):
     queryset = Employee.objects.all()
 
 
-class PositionFilterReadOnly(ReadOnlyModelViewSet):
+class PositionFilterReadOnly(mixins.ListModelMixin,
+                             GenericViewSet,):
     serializer_class = FilterPositionModelSerializer
     http_method_names = [
         'get',
@@ -233,7 +233,8 @@ class PositionFilterReadOnly(ReadOnlyModelViewSet):
     queryset = Position.objects.all()
 
 
-class GradeFilterReadOnly(ReadOnlyModelViewSet):
+class GradeFilterReadOnly(mixins.ListModelMixin,
+                          GenericViewSet,):
     serializer_class = FilterGradeModelSerializer
     http_method_names = [
         'get',
@@ -242,7 +243,8 @@ class GradeFilterReadOnly(ReadOnlyModelViewSet):
     queryset = Grade.objects.all()
 
 
-class CompetenceFilterReadOnly(ReadOnlyModelViewSet):
+class CompetenceFilterReadOnly(mixins.ListModelMixin,
+                               GenericViewSet,):
     serializer_class = FilterCompetenceModelSerializer
     http_method_names = [
         'get',
@@ -251,7 +253,8 @@ class CompetenceFilterReadOnly(ReadOnlyModelViewSet):
     queryset = Competence.objects.all()
 
 
-class SkillFilterReadOnly(ReadOnlyModelViewSet):
+class SkillFilterReadOnly(mixins.ListModelMixin,
+                          GenericViewSet,):
     serializer_class = FilterSkillModelSerializer
     http_method_names = [
         'get',
@@ -260,7 +263,8 @@ class SkillFilterReadOnly(ReadOnlyModelViewSet):
     queryset = Skill.objects.all()
 
 
-class TrainigRequestFilterReadOnly(ReadOnlyModelViewSet):
+class TrainigRequestFilterReadOnly(mixins.ListModelMixin,
+                                   GenericViewSet,):
     serializer_class = FilterTrainigRequestModelSerializer
     queryset = TrainigRequest.objects.all()
     http_method_names = [
@@ -269,7 +273,8 @@ class TrainigRequestFilterReadOnly(ReadOnlyModelViewSet):
     ]
 
 
-class ThinTeamReadOnly(ReadOnlyModelViewSet):
+class ThinTeamReadOnly(mixins.ListModelMixin,
+                       GenericViewSet,):
     serializer_class = ThinTeamModelSerializer
     http_method_names = [
         'get',
@@ -291,5 +296,3 @@ class CompetenceModelViewSet(ModelViewSet):
     Насчёт даты, то суммировать надо по месяцам. Если взят сентябрь, даже 30, то он берётся весь.
     """
     pass
-
-
