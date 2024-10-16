@@ -134,6 +134,7 @@ class EmployeeListModelViewSet(mixins.ListModelMixin,
             .prefetch_related(
                 'team',
                 'development_requests',
+                'ratings',
                 Prefetch('levels', queryset=skills_with_scores,
                          to_attr='filtered_levels')
             )
