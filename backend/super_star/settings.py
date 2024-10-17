@@ -156,6 +156,24 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'https://super-stars.online',
 ]
+
+SPECTACULAR_SETTINGS = {
+    'SERVE_URLCONF': 'super_star.urls',
+    'SCHEMA_PATH_PREFIX': '/api/v1',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        'filter': True,
+        'displayRequestDuration': True,
+    },
+    'USE_HTTPS': True,
+}
+
 SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Basic': {
+            'type': 'basic'
+        }
+    },
     'USE_HTTPS': True,
 }

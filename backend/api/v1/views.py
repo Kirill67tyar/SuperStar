@@ -130,7 +130,6 @@ class EmployeeListModelViewSet(mixins.ListModelMixin,
         # Запрос для получения сотрудников с предустановленными уровнями
         queryset = (
             queryset
-            # .select_related('position', 'grade')
             .prefetch_related(
                 'team',
                 'development_requests',
