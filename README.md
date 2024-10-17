@@ -101,4 +101,8 @@ Docker Compose 3
 
 ### Авторство
 
+#### frontend:
+[Анна Харатова](https://github.com/AnnaKharatova).
+#### backend:
+[Дарья Попкова](https://github.com/PopkovaDar).
 [Кирилл Богомолов](https://github.com/Kirill67tyar).
