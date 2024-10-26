@@ -296,3 +296,6 @@ class FilterTrainigRequestModelSerializer(serializers.ModelSerializer):
         )
 
         
+class DateAverageScoreSerializer(serializers.Serializer):
+    date = serializers.DateField()
+    avg_score = serializers.FloatField()

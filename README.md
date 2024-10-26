@@ -101,6 +101,14 @@ Docker Compose 3
 
 ### Авторство
 
+#### design:
+Maria, [17.10.2024 23:16]
+(13) Maria Nikitina | LinkedIn
+https://www.linkedin.com/in/maria-nikitina-13498a11a/
+https://fi.linkedin.com/in/maria-nikitina-13498a11a
+- [Колыванова Серафима](https://github.com/SerVa2/Pets_project)
+- [Светлана Клочкова](https://www.behance.net/a070073f) - https://www.linkedin.com/in/svetlana-klochkova/.
+- [Алина Рейхерт](https://www.behance.net/alinareikhert).
 #### frontend:
 - [Анна Харатова](https://github.com/AnnaKharatova).
 #### backend:

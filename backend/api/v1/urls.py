@@ -13,6 +13,7 @@ from api.v1.views import (
     SkillFilterReadOnly,
     TrainigRequestFilterReadOnly,
     ThinTeamReadOnly,
+    AverageScoreByDateView,
 )
 
 
@@ -34,4 +35,5 @@ filter_router.register('data', TrainigRequestFilterReadOnly, basename='data')
 urlpatterns_v1 = [
     path('', include(router_v1.urls)),
     path('filters/', include(filter_router.urls)),
+    path('rating-dynamics/', AverageScoreByDateView.as_view(), name='rating-dynamics'),
 ]
