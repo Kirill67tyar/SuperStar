@@ -1,8 +1,9 @@
 from rest_framework.response import Response
-from django.db.models import OuterRef, Subquery, Prefetch, Q, Count
-from django.db.models.functions import Coalesce
+from django.db.models import OuterRef, Subquery, Prefetch, Q, Count, Avg
+from django.db.models.functions import Coalesce, Round
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, GenericViewSet
 from rest_framework import mixins
+from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
 
 
@@ -10,6 +11,7 @@ from trainings.models import (
     TrainigRequest,
     Level,
     PositionRequirement,
+    Rating,
 )
 from employees.models import (
     Employee,
@@ -31,6 +33,7 @@ from api.v1.serializers import (
     FilterSkillModelSerializer,
     FilterTrainigRequestModelSerializer,
     ThinTeamModelSerializer,
+    DateAverageScoreSerializer,
 )
 
 
@@ -296,3 +299,16 @@ class CompetenceModelViewSet(ModelViewSet):
     Насчёт даты, то суммировать надо по месяцам. Если взят сентябрь, даже 30, то он берётся весь.
     """
     pass
+
+
+class AverageScoreByDateView(APIView):
+    def get(self, request):
+        queryset = (
+            Rating.objects
+            .values('date')
+            .annotate(
+                avg_score=Round(Avg('score'), 2)
+            )
+        )
+        serializer = DateAverageScoreSerializer(queryset, many=True)
+        return Response(serializer.data)
