@@ -5,7 +5,7 @@ Django==4.2.10
 django-cors-headers==4.4.0
 django-debug-toolbar==4.4.6
 django-extensions==3.2.3
-django-filter==24.3
+django-filter
 djangorestframework==3.14.0
 drf-yasg==1.21.7
 et-xmlfile==1.1.0
